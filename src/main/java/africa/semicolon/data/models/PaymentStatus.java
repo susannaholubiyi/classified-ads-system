@@ -1,2 +1,9 @@
-package africa.semicolon.data.models;public class PaymentStatus {
+package africa.semicolon.data.models;
+
+
+
+public enum PaymentStatus {
+    SUCCESSFUL,
+    UNSUCCESSFUL
+
 }

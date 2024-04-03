@@ -2,6 +2,7 @@ package africa.semicolon.data.reposiories;
 
 import africa.semicolon.data.models.Ad;
 import africa.semicolon.data.models.Buyer;
+import africa.semicolon.data.models.Review;
 import africa.semicolon.data.models.Seller;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +11,7 @@ import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 @DataMongoTest
-class RepositoryTest {
+class RepositoriesTest {
 
     @Autowired
     private SellerRepository sellerRepository;
@@ -18,6 +19,8 @@ class RepositoryTest {
     private BuyerRepository buyerRepository;
     @Autowired
     private AdRepository adRepository;
+    @Autowired
+    private ReviewRepository reviewRepository;
     @BeforeEach
     public void setUp(){
         sellerRepository.deleteAll();
@@ -42,6 +45,12 @@ class RepositoryTest {
         Ad ad = new Ad();
         adRepository.save(ad);
         assertEquals(1, adRepository.count());
+    }
+    @Test
+    public void reviewRepositoryCanSaveTest(){
+        Review review = new Review();
+        reviewRepository.save(review);
+        assertEquals(1, reviewRepository.count());
     }
 
 }
