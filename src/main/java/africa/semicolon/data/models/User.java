@@ -8,10 +8,14 @@ import java.util.List;
 
 @Data
 @Document
-public class Buyer {
+public class User {
     private String id;
-    private String name;
+    private String username;
+    private String password;
     @DBRef
     private List<Receipt> receipts;
+    @DBRef
+    private List<Ad> ads;
     private Review reviews;
+    private PaymentInformation paymentInfo;
 }

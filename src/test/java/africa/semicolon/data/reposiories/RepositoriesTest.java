@@ -1,9 +1,11 @@
 package africa.semicolon.data.reposiories;
 
 import africa.semicolon.data.models.Ad;
-import africa.semicolon.data.models.Buyer;
+import africa.semicolon.data.models.User;
 import africa.semicolon.data.models.Review;
-import africa.semicolon.data.models.Seller;
+import africa.semicolon.data.repositories.AdRepository;
+import africa.semicolon.data.repositories.ReviewRepository;
+import africa.semicolon.data.repositories.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,32 +15,25 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataMongoTest
 class RepositoriesTest {
 
+
     @Autowired
-    private SellerRepository sellerRepository;
-    @Autowired
-    private BuyerRepository buyerRepository;
+    private UserRepository userRepository;
     @Autowired
     private AdRepository adRepository;
     @Autowired
     private ReviewRepository reviewRepository;
     @BeforeEach
     public void setUp(){
-        sellerRepository.deleteAll();
-        buyerRepository.deleteAll();
+        userRepository.deleteAll();
         adRepository.deleteAll();
+        reviewRepository.deleteAll();
     }
-    @Test
-    public void sellerRepositoryCanSaveTest(){
-        Seller seller = new Seller();
-        sellerRepository.save(seller);
-        assertEquals(1, sellerRepository.count());
 
-    }
     @Test
     public void buyerRepositoryCanSaveTest(){
-        Buyer buyer = new Buyer();
-        buyerRepository.save(buyer);
-        assertEquals(1, buyerRepository.count());
+        User user = new User();
+        userRepository.save(user);
+        assertEquals(1, userRepository.count());
     }
     @Test
     public void adRepositoryCanSaveTest(){

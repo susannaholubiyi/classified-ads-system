@@ -1,4 +1,4 @@
-package africa.semicolon.data.reposiories;
+package africa.semicolon.data.repositories;
 
 import africa.semicolon.data.models.Review;
 import org.springframework.data.mongodb.repository.MongoRepository;

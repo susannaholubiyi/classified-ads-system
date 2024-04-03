@@ -14,5 +14,6 @@ public class Ad {
     private int productPrice;
     @DBRef
     private List<Review> reviews;
+    private Plan planType;
     private String id;
 }
