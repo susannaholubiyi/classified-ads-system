@@ -5,9 +5,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @Document
-public class PaymentInformation {
-    private String accountName;
-    private String accountNumber;
-    private String bankName;
+public class SellerContactInformation {
+    private String phoneNumber;
+    private String emailAddress;
+    private String address;
     private String id;
 }

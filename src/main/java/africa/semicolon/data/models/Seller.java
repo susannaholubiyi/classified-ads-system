@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -12,9 +13,10 @@ public class Seller {
     private String id;
     private String username;
     private String password;
-    private PaymentInformation paymentInfo;
+    private SellerContactInformation sellerContactInfo;
     @DBRef
-    private List<Ad> ads;
+    private List<Ad> ads = new ArrayList<>();
     @DBRef
-    private List<Buyer> buyers;
+    private List<Buyer> buyers = new ArrayList<>();
+    private boolean isLocked = true;
 }
