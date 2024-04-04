@@ -5,27 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7255add-a107-43fc-842e-1b22cc1944d4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/models/Plan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/repositories/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserServices.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/UserServicesImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/models/Buyer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/repositories/BuyerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/repositories/SellerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/CreateAdRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/exceptions/IllegalArgumentException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/SellerServices.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/SellerServicesImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/models/Ad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/models/Ad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/models/Buyer.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/models/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/models/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/models/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/reposiories/AdRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/repositories/AdRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/reposiories/BuyerRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/reposiories/ReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/repositories/ReviewRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/reposiories/SellerRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/RegisterSellerRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/RegisterUserRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/RegisterSellerResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/RegisterUserResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/exceptions/UserNameAlreadyExistsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/exceptions/UsernameAlreadyExistsException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/SellerServices.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/SellerServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserServicesImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/models/Seller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/repositories/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/RegisterUserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/RegisterSellerRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/RegisterUserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/RegisterSellerResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserServicesImpl.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/utils/Mappers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/utils/Mappers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/africa/semicolon/data/reposiories/RepositoriesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/data/reposiories/RepositoriesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/SellerServicesImplTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/UserServicesImplTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,11 +33,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Enum" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="main" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -54,30 +54,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "/home/user/Desktop/classifiedAdsSystem/src/main/java/africa/semicolon/Main.java",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "spring.configuration.checksum": "c27b5ae319c2adc4f82aec7a5a79b453",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/home/user/Desktop/classifiedAdsSystem/src/main/java/africa/semicolon/Main.java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;c27b5ae319c2adc4f82aec7a5a79b453&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -87,39 +87,39 @@
       <recent name="africa.semicolon.data.reposiories" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserServicesImplTest">
-    <configuration name="RepositoriesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.SellerServicesImplTest">
+    <configuration name="SellerServicesImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="classifiedAdsSystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="africa.semicolon.data.reposiories.*" />
+          <option name="PATTERN" value="africa.semicolon.services.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.data.reposiories" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.data.reposiories.RepositoriesTest" />
+      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.SellerServicesImplTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RepositoriesTest.adRepositoryCanSaveTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SellerServicesImplTest.registerAnotherUserWithExistingUserNameInDb_usernameAlreadyExistsExceptionIsThrownTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="classifiedAdsSystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="africa.semicolon.data.reposiories.*" />
+          <option name="PATTERN" value="africa.semicolon.services.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.data.reposiories" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.data.reposiories.RepositoriesTest" />
-      <option name="METHOD_NAME" value="adRepositoryCanSaveTest" />
+      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.SellerServicesImplTest" />
+      <option name="METHOD_NAME" value="registerAnotherUserWithExistingUserNameInDb_usernameAlreadyExistsExceptionIsThrownTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServicesImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SellerServicesImplTest.registerSellerWithEmptyPassword_illegalArgumentExceptionIsThrownTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="classifiedAdsSystem" />
       <extension name="coverage">
         <pattern>
@@ -128,29 +128,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.UserServicesImplTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserServicesImplTest.registerSellerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="classifiedAdsSystem" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="africa.semicolon.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.UserServicesImplTest" />
-      <option name="METHOD_NAME" value="registerSellerTest" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.SellerServicesImplTest" />
+      <option name="METHOD_NAME" value="registerSellerWithEmptyPassword_illegalArgumentExceptionIsThrownTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServicesImplTest.registerSellerWithUsernameThatAlreadyExistsInDb_usernameAlreadyExistsExceptionIsThrown" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SellerServicesImplTest.registerSellerWithEmptyUsername_illegalArgumentExceptionIsThrownTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="classifiedAdsSystem" />
       <extension name="coverage">
         <pattern>
@@ -159,8 +144,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.UserServicesImplTest" />
-      <option name="METHOD_NAME" value="registerSellerWithUsernameThatAlreadyExistsInDb_usernameAlreadyExistsExceptionIsThrown" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.SellerServicesImplTest" />
+      <option name="METHOD_NAME" value="registerSellerWithEmptyUsername_illegalArgumentExceptionIsThrownTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SellerServicesImplTest.registerSellerWithNullPassword_illegalArgumentExceptionIsThrownTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="classifiedAdsSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="africa.semicolon.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.SellerServicesImplTest" />
+      <option name="METHOD_NAME" value="registerSellerWithNullPassword_illegalArgumentExceptionIsThrownTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -168,11 +169,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserServicesImplTest" />
-        <item itemvalue="JUnit.RepositoriesTest" />
-        <item itemvalue="JUnit.UserServicesImplTest.registerSellerWithUsernameThatAlreadyExistsInDb_usernameAlreadyExistsExceptionIsThrown" />
-        <item itemvalue="JUnit.UserServicesImplTest.registerSellerTest" />
-        <item itemvalue="JUnit.RepositoriesTest.adRepositoryCanSaveTest" />
+        <item itemvalue="JUnit.SellerServicesImplTest" />
+        <item itemvalue="JUnit.SellerServicesImplTest.registerSellerWithEmptyUsername_illegalArgumentExceptionIsThrownTest" />
+        <item itemvalue="JUnit.SellerServicesImplTest.registerSellerWithEmptyPassword_illegalArgumentExceptionIsThrownTest" />
+        <item itemvalue="JUnit.SellerServicesImplTest.registerAnotherUserWithExistingUserNameInDb_usernameAlreadyExistsExceptionIsThrownTest" />
+        <item itemvalue="JUnit.SellerServicesImplTest.registerSellerWithNullPassword_illegalArgumentExceptionIsThrownTest" />
       </list>
     </recent_temporary>
   </component>
@@ -188,7 +189,7 @@
       <workItem from="1712139228397" duration="158000" />
       <workItem from="1712144996585" duration="4175000" />
       <workItem from="1712151032089" duration="105000" />
-      <workItem from="1712151213044" duration="12312000" />
+      <workItem from="1712151213044" duration="27224000" />
     </task>
     <servers />
   </component>

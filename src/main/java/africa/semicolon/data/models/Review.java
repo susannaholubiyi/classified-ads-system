@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Review {
     private String id;
-    private User reviewer;
+    private Buyer reviewer;
     private String content;
     private Ad productReviewed;
 }
