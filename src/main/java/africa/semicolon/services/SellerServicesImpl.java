@@ -43,12 +43,12 @@ public class SellerServicesImpl implements SellerServices{
         validateIfEmpty(registerSellerRequest.getEmailAddress());
         validateIfEmpty(registerSellerRequest.getAddress());
         SellerContactInformation contactInformation = mapSellerInfo(registerSellerRequest);
-        Seller seller = map(registerSellerRequest);
+        Seller seller = mapRegisterSeller(registerSellerRequest);
         seller.setSellerContactInfo(contactInformation);
         seller.setLocked(false);
         contactInfoRepository.save(contactInformation);
         sellerRepository.save(seller);
-        return map(seller);
+        return mapRegisterSeller(seller);
 
     }
 
@@ -69,7 +69,7 @@ public class SellerServicesImpl implements SellerServices{
 
     private void validateUserName(String username) {
         boolean usernameExists = sellerRepository.existsByUsername(username);
-        if(usernameExists) throw new UsernameAlreadyExistsException(String.format("%s is a registered user", username));
+        if(usernameExists) throw new UsernameAlreadyExistsException(String.format("%s is a registered seller", username));
     }
 
 }

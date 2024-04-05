@@ -14,7 +14,7 @@ public class Seller {
     private String username;
     private String password;
     @DBRef
-    private SellerContactInformation sellerContactInfo;
+    private SellerContactInformation sellerContactInfo = new SellerContactInformation();
     @DBRef
     private List<Ad> ads = new ArrayList<>();
     @DBRef

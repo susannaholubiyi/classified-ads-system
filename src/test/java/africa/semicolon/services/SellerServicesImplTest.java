@@ -1,12 +1,16 @@
 package africa.semicolon.services;
 
 import africa.semicolon.data.models.Ad;
+import africa.semicolon.data.models.Buyer;
 import africa.semicolon.data.models.Seller;
 import africa.semicolon.data.repositories.AdRepository;
+import africa.semicolon.data.repositories.BuyerRepository;
 import africa.semicolon.data.repositories.SellerContactInfoRepository;
 import africa.semicolon.data.repositories.SellerRepository;
 import africa.semicolon.dtos.CreateAdRequest;
+import africa.semicolon.dtos.RegisterBuyerRequest;
 import africa.semicolon.dtos.RegisterSellerRequest;
+import africa.semicolon.dtos.ViewAdRequest;
 import africa.semicolon.exceptions.*;
 import africa.semicolon.exceptions.IllegalArgumentException;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,11 +34,14 @@ public class SellerServicesImplTest {
     private SellerContactInfoRepository contactInfoRepository;
     @Autowired
     private BuyerService buyerService;
+    @Autowired
+    private BuyerRepository buyerRepository;
     @BeforeEach
     public void setUp(){
         sellerRepository.deleteAll();
         adRepository.deleteAll();
         contactInfoRepository.deleteAll();
+        buyerRepository.deleteAll();
     }
 
     @Test
@@ -305,7 +312,7 @@ public class SellerServicesImplTest {
         assertThrows(InvalidInputException.class,()->sellerServices.createAd(createAdRequest));
     }
     @Test
-    public void viewAllAdsTest(){
+    public void buyerCanViewAllAdsTest(){
         RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
         registerSellerRequest.setUsername("username");
         registerSellerRequest.setPassword("password");
@@ -331,5 +338,93 @@ public class SellerServicesImplTest {
         List<Ad> allAds = buyerService.viewAllAds();
         assertEquals(1, allAds.size());
     }
+    @Test
+    public void buyerCanViewOneParticularAdsTest() {
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
+        sellerServices.register(registerSellerRequest);
+        assertEquals(1, sellerRepository.count());
+        Optional<Seller> seller = sellerRepository.findByUsername("username");
+        assertFalse(seller.get().isLocked());
 
-}
+        CreateAdRequest createAdRequest = new CreateAdRequest();
+        createAdRequest.setProductName("product name");
+        createAdRequest.setProductDescription("product description");
+        createAdRequest.setProductPrice("1000");
+        createAdRequest.setSellerName("username");
+        sellerServices.createAd(createAdRequest);
+
+        CreateAdRequest createAdRequest2 = new CreateAdRequest();
+        createAdRequest2.setProductName("product name");
+        createAdRequest2.setProductDescription("product description");
+        createAdRequest2.setProductPrice("1000");
+        createAdRequest2.setSellerName("username");
+        sellerServices.createAd(createAdRequest2);
+        seller = sellerRepository.findByUsername("username");
+        assertTrue(seller.isPresent());
+        assertEquals(2, adRepository.count());
+
+        RegisterBuyerRequest registerBuyerRequest = new RegisterBuyerRequest();
+        registerBuyerRequest.setName("buyername");
+        registerBuyerRequest.setUsername("username");
+        buyerService.register(registerBuyerRequest);
+        assertEquals(1, buyerRepository.count());
+        Optional<Buyer> buyer = buyerRepository.findByUsername("username");
+        assertFalse(buyer.get().isLocked());
+        assertEquals(1, buyerRepository.count());
+
+        ViewAdRequest viewAdRequest = new ViewAdRequest();
+        viewAdRequest.setBuyerName("buyername");
+        viewAdRequest.setSellerName("username");
+        Ad ad = seller.get().getAds().get(0);
+        viewAdRequest.setAdId(ad.getId());
+        buyerService.viewOneParticularAdWith(viewAdRequest);
+        seller = sellerRepository.findByUsername("username");
+        ad = seller.get().getAds().get(0);
+        assertEquals(1,ad.getNumberOfViews() );
+    }
+    @Test
+    public void notRegisteredBuyerCannotViewOneParticularAdTest() {
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
+        sellerServices.register(registerSellerRequest);
+        assertEquals(1, sellerRepository.count());
+        Optional<Seller> seller = sellerRepository.findByUsername("username");
+        assertFalse(seller.get().isLocked());
+
+        CreateAdRequest createAdRequest = new CreateAdRequest();
+        createAdRequest.setProductName("product name");
+        createAdRequest.setProductDescription("product description");
+        createAdRequest.setProductPrice("1000");
+        createAdRequest.setSellerName("username");
+        sellerServices.createAd(createAdRequest);
+
+        CreateAdRequest createAdRequest2 = new CreateAdRequest();
+        createAdRequest2.setProductName("product name");
+        createAdRequest2.setProductDescription("product description");
+        createAdRequest2.setProductPrice("1000");
+        createAdRequest2.setSellerName("username");
+        sellerServices.createAd(createAdRequest2);
+        seller = sellerRepository.findByUsername("username");
+        assertTrue(seller.isPresent());
+        assertEquals(2, adRepository.count());
+
+        ViewAdRequest viewAdRequest = new ViewAdRequest();
+        viewAdRequest.setSellerName("username");
+        Ad ad = seller.get().getAds().get(0);
+        viewAdRequest.setAdId(ad.getId());
+        assertThrows(NullPointerException.class,()->buyerService.viewOneParticularAdWith(viewAdRequest));
+    }
+
+
+
+
+    }

@@ -11,5 +11,9 @@ import java.util.List;
 public class Buyer{
     private String id;
     private String name;
+    private String username;
+    private String sellerName;
     private Review reviews;
+
+    private boolean isLocked = true;
 }
