@@ -11,7 +11,5 @@ import java.util.List;
 public class Buyer{
     private String id;
     private String name;
-    @DBRef
-    private List<Receipt> receipts;
     private Review reviews;
 }

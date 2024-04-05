@@ -4,7 +4,8 @@ import africa.semicolon.data.models.Ad;
 import lombok.Data;
 
 import java.util.List;
+
 @Data
-public class ViewPostResponse {
-    private List<Ad> allAds;
+public class ViewAdRequest {
+
 }

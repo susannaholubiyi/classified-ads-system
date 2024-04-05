@@ -8,10 +8,9 @@ import africa.semicolon.utils.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.regex.Pattern;
+import java.util.List;
 
-import static africa.semicolon.utils.HelperMethods.validateIfEmpty;
-import static africa.semicolon.utils.HelperMethods.validateIfNull;
+import static africa.semicolon.utils.GlobalHelpers.*;
 
 @Service
 public class AdServiceImpl implements AdServices {
@@ -31,10 +30,9 @@ public class AdServiceImpl implements AdServices {
         }
         throw new InvalidInputException(String.format("%s is an invalid amount", createAdRequest.getProductPrice()));
     }
-
-    private boolean isNumeric(String productPrice) {
-        String regex = "\\d+";
-        Pattern pattern = Pattern.compile(regex);
-        return pattern.matcher(productPrice).matches();
+    public List<Ad> viewAllAds(){
+        return adRepository.findAll();
     }
+
+
 }

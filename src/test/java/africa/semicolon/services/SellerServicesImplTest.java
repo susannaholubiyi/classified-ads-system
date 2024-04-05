@@ -1,19 +1,20 @@
 package africa.semicolon.services;
 
+import africa.semicolon.data.models.Ad;
 import africa.semicolon.data.models.Seller;
 import africa.semicolon.data.repositories.AdRepository;
+import africa.semicolon.data.repositories.SellerContactInfoRepository;
 import africa.semicolon.data.repositories.SellerRepository;
 import africa.semicolon.dtos.CreateAdRequest;
 import africa.semicolon.dtos.RegisterSellerRequest;
+import africa.semicolon.exceptions.*;
 import africa.semicolon.exceptions.IllegalArgumentException;
-import africa.semicolon.exceptions.InvalidInputException;
-import africa.semicolon.exceptions.SellerDoesNotExistException;
-import africa.semicolon.exceptions.UsernameAlreadyExistsException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,10 +26,15 @@ public class SellerServicesImplTest {
     private SellerRepository sellerRepository;
     @Autowired
     private AdRepository adRepository;
+    @Autowired
+    private SellerContactInfoRepository contactInfoRepository;
+    @Autowired
+    private BuyerService buyerService;
     @BeforeEach
     public void setUp(){
         sellerRepository.deleteAll();
         adRepository.deleteAll();
+        contactInfoRepository.deleteAll();
     }
 
     @Test
@@ -36,7 +42,11 @@ public class SellerServicesImplTest {
         RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
         registerSellerRequest.setUsername("username");
         registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
         sellerServices.register(registerSellerRequest);
+        assertEquals(1, contactInfoRepository.count());
         assertEquals(1, sellerRepository.count());
     }
     @Test
@@ -44,6 +54,9 @@ public class SellerServicesImplTest {
         RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
         registerSellerRequest.setUsername("username");
         registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
         sellerServices.register(registerSellerRequest);
         assertEquals(1, sellerRepository.count());
         assertThrows(UsernameAlreadyExistsException.class, ()->sellerServices.register(registerSellerRequest));
@@ -53,6 +66,30 @@ public class SellerServicesImplTest {
         RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
         registerSellerRequest.setUsername(null);
         registerSellerRequest.setPassword("password");
+        assertThrows(NullPointerException.class,()->sellerServices.register(registerSellerRequest));
+    }
+    @Test
+    public void registerSellerWithNullPhoneNumber_nullPointerExceptionIsThrownTest(){
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber(null);
+        assertThrows(NullPointerException.class,()->sellerServices.register(registerSellerRequest));
+    }
+    @Test
+    public void registerSellerWithNullEmailAddress_nullPointerExceptionIsThrownTest(){
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        registerSellerRequest.setEmailAddress(null);
+        assertThrows(NullPointerException.class,()->sellerServices.register(registerSellerRequest));
+    }
+    @Test
+    public void registerSellerWithNullAddress_nullPointerExceptionIsThrownTest(){
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        registerSellerRequest.setEmailAddress(null);
         assertThrows(NullPointerException.class,()->sellerServices.register(registerSellerRequest));
     }
     @Test
@@ -67,13 +104,69 @@ public class SellerServicesImplTest {
         RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
         registerSellerRequest.setUsername("username");
         registerSellerRequest.setPassword("");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
         assertThrows(IllegalArgumentException.class,()->sellerServices.register(registerSellerRequest));
+    }
+    @Test
+    public void registerSellerWithEmptyPhoneNumber_illegalArgumentExceptionIsThrownTest(){
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
+        registerSellerRequest.setPhoneNumber("");
+        assertThrows(IllegalArgumentException.class,()->sellerServices.register(registerSellerRequest));
+    }
+    @Test
+    public void registerSellerWithEmptyAddress_illegalArgumentExceptionIsThrownTest(){
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("");
+        registerSellerRequest.setPhoneNumber("08106317491");
+        assertThrows(IllegalArgumentException.class,()->sellerServices.register(registerSellerRequest));
+    }
+    @Test
+    public void registerSellerWithEmptyEmailAddress_illegalArgumentExceptionIsThrownTest(){
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        registerSellerRequest.setEmailAddress("");
+        registerSellerRequest.setAddress("address");
+        registerSellerRequest.setPhoneNumber("08106317491");
+        assertThrows(IllegalArgumentException.class,()->sellerServices.register(registerSellerRequest));
+    }
+    @Test
+    public void registerSellerWithPhoneNumberThatIsNotElevenDigits_incorrectPhoneNumberLengthExceptionIsThrownTest(){
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
+        registerSellerRequest.setPhoneNumber("081063174");
+        assertThrows(IncorrectPhoneNumberLength.class,()->sellerServices.register(registerSellerRequest));
+    }
+    @Test
+    public void registerSellerWithPhoneNumberThatIsNotPurelyDigits_invalidInputExceptionIsThrownTest(){
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
+        registerSellerRequest.setPhoneNumber("-06$dfji867");
+        assertThrows(InvalidInputException.class,()->sellerServices.register(registerSellerRequest));
     }
     @Test
     public void registerSellerWithEmptyUsername_illegalArgumentExceptionIsThrownTest(){
         RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
         registerSellerRequest.setUsername("");
         registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
         assertThrows(IllegalArgumentException.class,()->sellerServices.register(registerSellerRequest));
     }
     @Test
@@ -81,6 +174,9 @@ public class SellerServicesImplTest {
         RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
         registerSellerRequest.setUsername("username");
         registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
         sellerServices.register(registerSellerRequest);
         assertEquals(1, sellerRepository.count());
         Optional<Seller> seller = sellerRepository.findByUsername("username");
@@ -113,6 +209,9 @@ public class SellerServicesImplTest {
         RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
         registerSellerRequest.setUsername("username");
         registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
         sellerServices.register(registerSellerRequest);
         assertEquals(1, sellerRepository.count());
         Optional<Seller> seller = sellerRepository.findByUsername("username");
@@ -130,6 +229,9 @@ public class SellerServicesImplTest {
         RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
         registerSellerRequest.setUsername("username");
         registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
         sellerServices.register(registerSellerRequest);
         assertEquals(1, sellerRepository.count());
         Optional<Seller> seller = sellerRepository.findByUsername("username");
@@ -147,6 +249,9 @@ public class SellerServicesImplTest {
         RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
         registerSellerRequest.setUsername("username");
         registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
         sellerServices.register(registerSellerRequest);
         assertEquals(1, sellerRepository.count());
         Optional<Seller> seller = sellerRepository.findByUsername("username");
@@ -164,6 +269,9 @@ public class SellerServicesImplTest {
         RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
         registerSellerRequest.setUsername("username");
         registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
         sellerServices.register(registerSellerRequest);
         assertEquals(1, sellerRepository.count());
         Optional<Seller> seller = sellerRepository.findByUsername("username");
@@ -181,6 +289,9 @@ public class SellerServicesImplTest {
         RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
         registerSellerRequest.setUsername("username");
         registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
         sellerServices.register(registerSellerRequest);
         assertEquals(1, sellerRepository.count());
         Optional<Seller> seller = sellerRepository.findByUsername("username");
@@ -194,10 +305,13 @@ public class SellerServicesImplTest {
         assertThrows(InvalidInputException.class,()->sellerServices.createAd(createAdRequest));
     }
     @Test
-    public void buyerCanViewAdTest(){
+    public void viewAllAdsTest(){
         RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
         registerSellerRequest.setUsername("username");
         registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
         sellerServices.register(registerSellerRequest);
         assertEquals(1, sellerRepository.count());
         Optional<Seller> seller = sellerRepository.findByUsername("username");
@@ -214,7 +328,8 @@ public class SellerServicesImplTest {
         assertTrue(seller.isPresent());
         assertEquals(1, adRepository.count());
 
-
+        List<Ad> allAds = buyerService.viewAllAds();
+        assertEquals(1, allAds.size());
     }
 
 }

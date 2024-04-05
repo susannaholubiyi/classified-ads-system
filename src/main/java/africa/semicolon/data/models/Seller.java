@@ -13,6 +13,7 @@ public class Seller {
     private String id;
     private String username;
     private String password;
+    @DBRef
     private SellerContactInformation sellerContactInfo;
     @DBRef
     private List<Ad> ads = new ArrayList<>();

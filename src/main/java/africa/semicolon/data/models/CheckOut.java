@@ -10,5 +10,4 @@ public class CheckOut {
     private String productName;
     private int productPrice;
     private String productDescription;
-    private Receipt receipt;
 }

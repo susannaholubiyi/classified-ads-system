@@ -13,7 +13,9 @@ public class Ad {
     private String sellerName;
     private String productName;
     private String productDescription;
+    private SellerContactInformation sellerInfo;
     private String productPrice;
+    private int numberOfView;
     @DBRef
     private List<Review> reviews;
     private LocalDateTime dateCreated;
