@@ -46,6 +46,17 @@ public static SellerContactInformation mapSellerInfo(RegisterSellerRequest regis
         createAdResponse.setDate(DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDateTime.now()));
         return createAdResponse;
     }
+    public static Ad mapEditAd(EditAdRequest editAdRequest, Ad ad){
+        ad.setProductName(editAdRequest.getNewProductName());
+        ad.setProductDescription(editAdRequest.getNewProductDescription());
+        ad.setProductPrice(editAdRequest.getNewProductPrice());
+        return ad;
+    }
+    public static EditAdResponse mapEditAd(Ad ad){
+        EditAdResponse editAdResponse = new EditAdResponse();
+        editAdResponse.setDate(DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDateTime.now()));
+        return editAdResponse;
+    }
     public static Buyer mapRegisterBuyer(RegisterBuyerRequest registerBuyerRequest){
         Buyer buyer = new Buyer();
         buyer.setUsername(registerBuyerRequest.getUsername().toLowerCase().strip());

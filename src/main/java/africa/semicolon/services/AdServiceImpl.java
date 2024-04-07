@@ -7,6 +7,7 @@ import africa.semicolon.data.repositories.AdRepository;
 import africa.semicolon.data.repositories.BuyerRepository;
 import africa.semicolon.data.repositories.SellerRepository;
 import africa.semicolon.dtos.CreateAdRequest;
+import africa.semicolon.dtos.EditAdRequest;
 import africa.semicolon.dtos.ViewAdRequest;
 import africa.semicolon.dtos.ViewAdResponse;
 import africa.semicolon.exceptions.AdNotFoundException;
@@ -20,6 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static africa.semicolon.utils.GlobalHelpers.*;
+import static africa.semicolon.utils.Mappers.mapEditAd;
 import static africa.semicolon.utils.Mappers.mapViewAdResponse;
 
 @Service
@@ -44,6 +46,40 @@ public class AdServiceImpl implements AdServices {
         }
         throw new InvalidInputException(String.format("%s is an invalid amount", createAdRequest.getProductPrice()));
     }
+    @Override
+    public Ad editAd(EditAdRequest editAdRequest){
+        validateEditAdRequest(editAdRequest);
+        Seller seller = findUserBy(editAdRequest.getSellerUsername().toLowerCase().strip());
+        Optional<Ad> optionalAd = getAd(editAdRequest,seller);
+        if (optionalAd.isEmpty()) {
+            throw new AdNotFoundException("Ad not found with ID: " + editAdRequest.getAdId());
+        }        Ad ad = optionalAd.get();
+        if (isNumeric(editAdRequest.getNewProductPrice())) {
+            Ad editedAd = mapEditAd(editAdRequest, ad);
+            adRepository.save(editedAd);
+            return editedAd;
+        }
+        throw new InvalidInputException(String.format("%s is an invalid amount", editAdRequest.getNewProductPrice()));
+    }
+
+    private static void validateEditAdRequest(EditAdRequest editAdRequest) {
+        validateIfEmpty(editAdRequest.getNewProductPrice());
+        validateIfEmpty(editAdRequest.getNewProductName());
+        validateIfEmpty(editAdRequest.getNewProductDescription());
+        validateIfEmpty(editAdRequest.getSellerUsername());
+        validateIfEmpty(editAdRequest.getAdId());
+        validateIfNull(editAdRequest.getSellerUsername());
+        validateIfNull(editAdRequest.getNewProductName());
+        validateIfNull(editAdRequest.getNewProductPrice());
+        validateIfNull(editAdRequest.getNewProductDescription());
+    }
+
+    private Seller findUserBy(String username) {
+        Optional<Seller> seller =  sellerRepository.findByUsername(username.toLowerCase().strip());
+        if(seller.isEmpty()) throw new SellerDoesNotExistException(String.format("%s is not a registered seller, kindly register", username));
+        sellerRepository.save(seller.get());
+        return seller.get();
+    }
 
     @Override
     public ViewAdResponse viewOneParticularAdWith(ViewAdRequest viewAdRequest) {
@@ -54,7 +90,7 @@ public class AdServiceImpl implements AdServices {
         Optional<Seller> sellerOptional = sellerRepository.findByUsername(viewAdRequest.getSellerName().toLowerCase().strip());
         checkIfSellerExistsWith(viewAdRequest, sellerOptional);
         Optional<Ad> adOptional = getAdFrom(viewAdRequest, sellerOptional);
-        findAd(viewAdRequest, adOptional);
+        validateAd(viewAdRequest, adOptional);
         Ad ad = adOptional.get();
         ad.setNumberOfViews(ad.getNumberOfViews() + 1);
         adRepository.save(ad);
@@ -68,7 +104,7 @@ public class AdServiceImpl implements AdServices {
             throw new NullPointerException(String.format("%s is not a registered buyer",provideBuyerUsername));
     }
 
-    private static void findAd(ViewAdRequest viewAdRequest, Optional<Ad> adOptional) {
+    private static void validateAd(ViewAdRequest viewAdRequest, Optional<Ad> adOptional) {
         if (adOptional.isEmpty()) {
             throw new AdNotFoundException("Ad not found with ID: " + viewAdRequest.getAdId());
         }
@@ -79,6 +115,13 @@ public class AdServiceImpl implements AdServices {
         Optional<Ad> adOptional;
         adOptional = seller.getAds().stream()
                 .filter(ad -> ad.getId().equals(viewAdRequest.getAdId()))
+                .findFirst();
+        return adOptional;
+    }
+    private static Optional<Ad> getAd(EditAdRequest editAdRequest, Seller seller) {
+        Optional<Ad> adOptional;
+        adOptional = seller.getAds().stream()
+                .filter(ad -> ad.getId().equals(editAdRequest.getAdId()))
                 .findFirst();
         return adOptional;
     }

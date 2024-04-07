@@ -7,4 +7,6 @@ public interface SellerServices {
     RegisterSellerResponse register(RegisterSellerRequest registerSellerRequest);
     CreateAdResponse createAd(CreateAdRequest createAdRequest);
     Seller findUserBy(String username);
+
+    EditAdResponse editAd(EditAdRequest editAdRequest);
 }

@@ -36,6 +36,14 @@ public class AdSystemController {
         }catch (Exception e){
             return new ResponseEntity<>(new ApiResponse(false, e.getMessage()), HttpStatus.BAD_REQUEST);        }
     }
+    @PostMapping("/edit-ad")
+    public ResponseEntity<?> editAd(@RequestBody EditAdRequest editAdRequest){
+        try {
+            var response =  sellerServices.editAd(editAdRequest);
+            return new ResponseEntity<>(new ApiResponse(true,response), HttpStatus.CREATED);
+        }catch (Exception e){
+            return new ResponseEntity<>(new ApiResponse(false, e.getMessage()), HttpStatus.BAD_REQUEST);        }
+    }
     @GetMapping("/find-seller")
     public ResponseEntity<?> findSeller(String username){
         try {

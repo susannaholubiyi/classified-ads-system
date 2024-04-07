@@ -200,6 +200,263 @@ public class SellerServicesImplTest {
         assertEquals("product name", seller.get().getAds().get(0).getProductName());
     }
     @Test
+    public void registeredSeller_CreateAd_editAdTest(){
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
+        sellerServices.register(registerSellerRequest);
+        assertEquals(1, sellerRepository.count());
+        Optional<Seller> seller = sellerRepository.findByUsername("username");
+        assertFalse(seller.get().isLocked());
+
+        CreateAdRequest createAdRequest = new CreateAdRequest();
+        createAdRequest.setProductName("product name");
+        createAdRequest.setProductDescription("product description");
+        createAdRequest.setProductPrice("1000");
+        createAdRequest.setSellerName("username");
+        sellerServices.createAd(createAdRequest);
+
+        seller= sellerRepository.findByUsername("username");
+        assertTrue(seller.isPresent());
+        assertEquals(1, adRepository.count());
+        assertEquals(1, seller.get().getAds().size());
+        assertEquals("product name", seller.get().getAds().get(0).getProductName());
+
+        EditAdRequest editAdRequest = new EditAdRequest();
+        editAdRequest.setSellerUsername("username");
+        Ad ad = seller.get().getAds().get(0);
+        editAdRequest.setAdId(ad.getId());
+        editAdRequest.setNewProductName("new product name");
+        editAdRequest.setNewProductDescription("new product description");
+        editAdRequest.setNewProductPrice("15000");
+        sellerServices.editAd(editAdRequest);
+
+        seller= sellerRepository.findByUsername("username");
+        assertTrue(seller.isPresent());
+        assertEquals(1, adRepository.count());
+        assertEquals(1, seller.get().getAds().size());
+        assertEquals("new product name", seller.get().getAds().get(0).getProductName());
+    }
+    @Test
+    public void registeredSeller_editAdWithEmptySellerUsername_sellerDoesNotExistExceptionIsThrownTest(){
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
+        sellerServices.register(registerSellerRequest);
+        assertEquals(1, sellerRepository.count());
+        Optional<Seller> seller = sellerRepository.findByUsername("username");
+        assertFalse(seller.get().isLocked());
+
+        CreateAdRequest createAdRequest = new CreateAdRequest();
+        createAdRequest.setProductName("product name");
+        createAdRequest.setProductDescription("product description");
+        createAdRequest.setProductPrice("1000");
+        createAdRequest.setSellerName("username");
+        sellerServices.createAd(createAdRequest);
+
+        seller= sellerRepository.findByUsername("username");
+        assertTrue(seller.isPresent());
+        assertEquals(1, adRepository.count());
+        assertEquals(1, seller.get().getAds().size());
+        assertEquals("product name", seller.get().getAds().get(0).getProductName());
+
+        EditAdRequest editAdRequest = new EditAdRequest();
+        editAdRequest.setSellerUsername("");
+        Ad ad = seller.get().getAds().get(0);
+        editAdRequest.setAdId(ad.getId());
+        editAdRequest.setNewProductName("new product name");
+        editAdRequest.setNewProductDescription("new product description");
+        editAdRequest.setNewProductPrice("15000");
+
+        assertThrows(SellerDoesNotExistException.class,()->sellerServices.editAd(editAdRequest));
+    }
+    @Test
+    public void registeredSeller_editAdWithEmptyAdId_sellerDoesNotExistExceptionIsThrownTest(){
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
+        sellerServices.register(registerSellerRequest);
+        assertEquals(1, sellerRepository.count());
+        Optional<Seller> seller = sellerRepository.findByUsername("username");
+        assertFalse(seller.get().isLocked());
+
+        CreateAdRequest createAdRequest = new CreateAdRequest();
+        createAdRequest.setProductName("product name");
+        createAdRequest.setProductDescription("product description");
+        createAdRequest.setProductPrice("1000");
+        createAdRequest.setSellerName("username");
+        sellerServices.createAd(createAdRequest);
+
+        seller= sellerRepository.findByUsername("username");
+        assertTrue(seller.isPresent());
+        assertEquals(1, adRepository.count());
+        assertEquals(1, seller.get().getAds().size());
+        assertEquals("product name", seller.get().getAds().get(0).getProductName());
+
+        EditAdRequest editAdRequest = new EditAdRequest();
+        editAdRequest.setSellerUsername("username");
+        Ad ad = seller.get().getAds().get(0);
+        editAdRequest.setAdId("");
+        editAdRequest.setNewProductName("new product name");
+        editAdRequest.setNewProductDescription("new product description");
+        editAdRequest.setNewProductPrice("15000");
+
+        assertThrows(IllegalArgumentException.class,()->sellerServices.editAd(editAdRequest));
+    }
+    @Test
+    public void registeredSeller_editAdWithEmptyProductName_sellerDoesNotExistExceptionIsThrownTest(){
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
+        sellerServices.register(registerSellerRequest);
+        assertEquals(1, sellerRepository.count());
+        Optional<Seller> seller = sellerRepository.findByUsername("username");
+        assertFalse(seller.get().isLocked());
+
+        CreateAdRequest createAdRequest = new CreateAdRequest();
+        createAdRequest.setProductName("product name");
+        createAdRequest.setProductDescription("product description");
+        createAdRequest.setProductPrice("1000");
+        createAdRequest.setSellerName("username");
+        sellerServices.createAd(createAdRequest);
+
+        seller= sellerRepository.findByUsername("username");
+        assertTrue(seller.isPresent());
+        assertEquals(1, adRepository.count());
+        assertEquals(1, seller.get().getAds().size());
+        assertEquals("product name", seller.get().getAds().get(0).getProductName());
+
+        EditAdRequest editAdRequest = new EditAdRequest();
+        editAdRequest.setSellerUsername("username");
+        Ad ad = seller.get().getAds().get(0);
+        editAdRequest.setAdId(ad.getId());
+        editAdRequest.setNewProductName("");
+        editAdRequest.setNewProductDescription("new product description");
+        editAdRequest.setNewProductPrice("15000");
+
+        assertThrows(IllegalArgumentException.class,()->sellerServices.editAd(editAdRequest));
+    }
+    @Test
+    public void registeredSeller_editAdWithEmptyProductDescription_sellerDoesNotExistExceptionIsThrownTest(){
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
+        sellerServices.register(registerSellerRequest);
+        assertEquals(1, sellerRepository.count());
+        Optional<Seller> seller = sellerRepository.findByUsername("username");
+        assertFalse(seller.get().isLocked());
+
+        CreateAdRequest createAdRequest = new CreateAdRequest();
+        createAdRequest.setProductName("product name");
+        createAdRequest.setProductDescription("product description");
+        createAdRequest.setProductPrice("1000");
+        createAdRequest.setSellerName("username");
+        sellerServices.createAd(createAdRequest);
+
+        seller= sellerRepository.findByUsername("username");
+        assertTrue(seller.isPresent());
+        assertEquals(1, adRepository.count());
+        assertEquals(1, seller.get().getAds().size());
+        assertEquals("product name", seller.get().getAds().get(0).getProductName());
+
+        EditAdRequest editAdRequest = new EditAdRequest();
+        editAdRequest.setSellerUsername("username");
+        Ad ad = seller.get().getAds().get(0);
+        editAdRequest.setAdId(ad.getId());
+        editAdRequest.setNewProductName("new product name");
+        editAdRequest.setNewProductDescription("");
+        editAdRequest.setNewProductPrice("15000");
+
+        assertThrows(IllegalArgumentException.class,()->sellerServices.editAd(editAdRequest));
+    }
+    @Test
+    public void registeredSeller_editAdWithEmptyProductPrice_sellerDoesNotExistExceptionIsThrownTest(){
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
+        sellerServices.register(registerSellerRequest);
+        assertEquals(1, sellerRepository.count());
+        Optional<Seller> seller = sellerRepository.findByUsername("username");
+        assertFalse(seller.get().isLocked());
+
+        CreateAdRequest createAdRequest = new CreateAdRequest();
+        createAdRequest.setProductName("product name");
+        createAdRequest.setProductDescription("product description");
+        createAdRequest.setProductPrice("1000");
+        createAdRequest.setSellerName("username");
+        sellerServices.createAd(createAdRequest);
+
+        seller= sellerRepository.findByUsername("username");
+        assertTrue(seller.isPresent());
+        assertEquals(1, adRepository.count());
+        assertEquals(1, seller.get().getAds().size());
+        assertEquals("product name", seller.get().getAds().get(0).getProductName());
+
+        EditAdRequest editAdRequest = new EditAdRequest();
+        editAdRequest.setSellerUsername("username");
+        Ad ad = seller.get().getAds().get(0);
+        editAdRequest.setAdId(ad.getId());
+        editAdRequest.setNewProductName("new product name");
+        editAdRequest.setNewProductDescription("new product description");
+        editAdRequest.setNewProductPrice("");
+
+        assertThrows(IllegalArgumentException.class,()->sellerServices.editAd(editAdRequest));
+    }
+    @Test
+    public void registeredSeller_editAdWithInvalidProductPrice_sellerDoesNotExistExceptionIsThrownTest(){
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        registerSellerRequest.setPhoneNumber("08123232323");
+        registerSellerRequest.setEmailAddress("email@address");
+        registerSellerRequest.setAddress("address");
+        sellerServices.register(registerSellerRequest);
+        assertEquals(1, sellerRepository.count());
+        Optional<Seller> seller = sellerRepository.findByUsername("username");
+        assertFalse(seller.get().isLocked());
+
+        CreateAdRequest createAdRequest = new CreateAdRequest();
+        createAdRequest.setProductName("product name");
+        createAdRequest.setProductDescription("product description");
+        createAdRequest.setProductPrice("1000");
+        createAdRequest.setSellerName("username");
+        sellerServices.createAd(createAdRequest);
+
+        seller= sellerRepository.findByUsername("username");
+        assertTrue(seller.isPresent());
+        assertEquals(1, adRepository.count());
+        assertEquals(1, seller.get().getAds().size());
+        assertEquals("product name", seller.get().getAds().get(0).getProductName());
+
+        EditAdRequest editAdRequest = new EditAdRequest();
+        editAdRequest.setSellerUsername("username");
+        Ad ad = seller.get().getAds().get(0);
+        editAdRequest.setAdId(ad.getId());
+        editAdRequest.setNewProductName("new product name");
+        editAdRequest.setNewProductDescription("new product description");
+        editAdRequest.setNewProductPrice("19-hfs");
+
+        assertThrows(InvalidInputException.class,()->sellerServices.editAd(editAdRequest));
+    }
+    @Test
     public void registeredSellerCanCreateAdWithDifferentusernameCaseTest(){
         RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
         registerSellerRequest.setUsername("username");

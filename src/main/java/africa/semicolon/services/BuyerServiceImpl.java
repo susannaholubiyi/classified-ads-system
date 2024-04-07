@@ -73,7 +73,7 @@ public class BuyerServiceImpl implements BuyerService{
         Optional<Seller> sellerOptional = sellerRepository.findByUsername(reviewAdRequest.getSellerUsername().toLowerCase().strip());
         checkIfSellerExistsWith(reviewAdRequest, sellerOptional);
         Optional<Ad> adOptional = getAdFrom(reviewAdRequest, sellerOptional);
-        findAd(reviewAdRequest, adOptional);
+        validateAd(reviewAdRequest, adOptional);
         Review review = mapReviewAdRequest(reviewAdRequest);
        Ad ad =  adOptional.get();
         ad.getReviews().add(review);
@@ -97,7 +97,7 @@ public class BuyerServiceImpl implements BuyerService{
                 .findFirst();
         return adOptional;
     }
-    private static void findAd(ReviewAdRequest reviewAdRequest, Optional<Ad> adOptional) {
+    private static void validateAd(ReviewAdRequest reviewAdRequest, Optional<Ad> adOptional) {
         if (adOptional.isEmpty()) {
             throw new AdNotFoundException("Ad not found with ID: " + reviewAdRequest.getAdId());
         }

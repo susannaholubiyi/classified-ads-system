@@ -4,10 +4,7 @@ import africa.semicolon.data.models.Ad;
 import africa.semicolon.data.models.Seller;
 import africa.semicolon.data.repositories.BuyerRepository;
 import africa.semicolon.data.repositories.SellerRepository;
-import africa.semicolon.dtos.CreateAdRequest;
-import africa.semicolon.dtos.RegisterBuyerRequest;
-import africa.semicolon.dtos.RegisterSellerRequest;
-import africa.semicolon.dtos.ViewAdRequest;
+import africa.semicolon.dtos.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -309,7 +306,6 @@ class AdSystemControllerTest {
 
         var response = adSystemController.registerBuyer(registerBuyerRequest);
         assertEquals(HttpStatus.BAD_REQUEST,response.getStatusCode());
-
     }
     @Test
     public void registeredSellerCanBeFoundByUsername_sellerIsFoundTest(){

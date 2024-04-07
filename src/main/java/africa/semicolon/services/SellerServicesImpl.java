@@ -6,6 +6,7 @@ import africa.semicolon.data.models.SellerContactInformation;
 import africa.semicolon.data.repositories.SellerContactInfoRepository;
 import africa.semicolon.data.repositories.SellerRepository;
 import africa.semicolon.dtos.*;
+import africa.semicolon.exceptions.AdNotFoundException;
 import africa.semicolon.exceptions.SellerDoesNotExistException;
 import africa.semicolon.exceptions.UsernameAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,10 +67,24 @@ public class SellerServicesImpl implements SellerServices{
         return seller.get();
     }
 
+    @Override
+    public EditAdResponse editAd(EditAdRequest editAdRequest) {
+        Seller seller = findUserBy(editAdRequest.getSellerUsername().toLowerCase().strip());
+        Ad ad = adServices.editAd(editAdRequest);
+        sellerRepository.save(seller);
+
+        return mapEditAd(ad);
+    }
+
 
     private void validateUserName(String username) {
         boolean usernameExists = sellerRepository.existsByUsername(username.toLowerCase().strip());
         if(usernameExists) throw new UsernameAlreadyExistsException(String.format("%s is a registered seller", username));
+    }
+    public static void validateAd(EditAdRequest editAdRequest, Optional<Ad> adOptional) {
+        if (adOptional.isEmpty()) {
+            throw new AdNotFoundException("Ad not found with ID: " + editAdRequest.getAdId());
+        }
     }
 
 }
