@@ -5,10 +5,7 @@ import africa.semicolon.data.models.Seller;
 import africa.semicolon.data.models.SellerContactInformation;
 import africa.semicolon.data.repositories.SellerContactInfoRepository;
 import africa.semicolon.data.repositories.SellerRepository;
-import africa.semicolon.dtos.CreateAdRequest;
-import africa.semicolon.dtos.CreateAdResponse;
-import africa.semicolon.dtos.RegisterSellerRequest;
-import africa.semicolon.dtos.RegisterSellerResponse;
+import africa.semicolon.dtos.*;
 import africa.semicolon.exceptions.SellerDoesNotExistException;
 import africa.semicolon.exceptions.UsernameAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +25,7 @@ public class SellerServicesImpl implements SellerServices{
     private AdServices adServices;
     @Autowired
     private SellerContactInfoRepository contactInfoRepository;
+
     @Override
     public RegisterSellerResponse register(RegisterSellerRequest registerSellerRequest) {
         registerSellerRequest.setUsername(registerSellerRequest.getUsername().toLowerCase());
@@ -54,21 +52,23 @@ public class SellerServicesImpl implements SellerServices{
 
     @Override
     public CreateAdResponse createAd(CreateAdRequest createAdRequest) {
-        Seller seller = findUserBy(createAdRequest.getSellerName());
+        Seller seller = findUserBy(createAdRequest.getSellerName().toLowerCase().strip());
         Ad createdAd = adServices.createAd(createAdRequest);
         seller.getAds().add(createdAd);
         sellerRepository.save(seller);
         return mapCreateAd(createdAd);
     }
+@Override
     public Seller findUserBy(String username) {
-        Optional<Seller> seller =  sellerRepository.findByUsername(username);
+        Optional<Seller> seller =  sellerRepository.findByUsername(username.toLowerCase().strip());
         if(seller.isEmpty()) throw new SellerDoesNotExistException(String.format("%s is not a registered seller, kindly register", username));
+        sellerRepository.save(seller.get());
         return seller.get();
     }
 
 
     private void validateUserName(String username) {
-        boolean usernameExists = sellerRepository.existsByUsername(username);
+        boolean usernameExists = sellerRepository.existsByUsername(username.toLowerCase().strip());
         if(usernameExists) throw new UsernameAlreadyExistsException(String.format("%s is a registered seller", username));
     }
 

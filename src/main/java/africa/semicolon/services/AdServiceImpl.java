@@ -10,7 +10,6 @@ import africa.semicolon.dtos.CreateAdRequest;
 import africa.semicolon.dtos.ViewAdRequest;
 import africa.semicolon.dtos.ViewAdResponse;
 import africa.semicolon.exceptions.AdNotFoundException;
-import africa.semicolon.exceptions.BuyerDoesNotExistException;
 import africa.semicolon.exceptions.InvalidInputException;
 import africa.semicolon.exceptions.SellerDoesNotExistException;
 import africa.semicolon.utils.Mappers;
@@ -48,9 +47,9 @@ public class AdServiceImpl implements AdServices {
 
     @Override
     public ViewAdResponse viewOneParticularAdWith(ViewAdRequest viewAdRequest) {
-        Optional<Buyer> buyer = buyerRepository.findByUsername(viewAdRequest.getBuyerName().toLowerCase().strip());
-        String buyerName = buyer.get().getName();
-        validateBuyer(buyerName, viewAdRequest.getBuyerName()) ;
+        Optional<Buyer> buyer = buyerRepository.findByUsername(viewAdRequest.getBuyerUsername().toLowerCase().strip());
+        String buyerUsername = buyer.get().getUsername();
+        validateBuyer(buyerUsername, viewAdRequest.getBuyerUsername()) ;
         validateRequests(viewAdRequest);
         Optional<Seller> sellerOptional = sellerRepository.findByUsername(viewAdRequest.getSellerName().toLowerCase().strip());
         checkIfSellerExistsWith(viewAdRequest, sellerOptional);
@@ -64,9 +63,9 @@ public class AdServiceImpl implements AdServices {
 
     }
 
-    private void validateBuyer(String storedBuyerName, String provideBuyerName) {
-        if (!storedBuyerName.equalsIgnoreCase(provideBuyerName))
-            throw new NullPointerException(String.format("%s is not a registered buyer",provideBuyerName));
+    private void validateBuyer(String storedBuyerUsername, String provideBuyerUsername) {
+        if (!storedBuyerUsername.equalsIgnoreCase(provideBuyerUsername))
+            throw new NullPointerException(String.format("%s is not a registered buyer",provideBuyerUsername));
     }
 
     private static void findAd(ViewAdRequest viewAdRequest, Optional<Ad> adOptional) {

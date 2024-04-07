@@ -1,6 +1,7 @@
 package africa.semicolon.data.models;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,5 +21,6 @@ public class Ad {
     @DBRef
     private List<Review> reviews = new ArrayList<>();
     private LocalDateTime dateCreated = LocalDateTime.now();
+    @Id
     private String id;
 }

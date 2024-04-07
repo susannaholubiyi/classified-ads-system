@@ -1,9 +1,6 @@
 package africa.semicolon.utils;
 
-import africa.semicolon.data.models.Ad;
-import africa.semicolon.data.models.Buyer;
-import africa.semicolon.data.models.Seller;
-import africa.semicolon.data.models.SellerContactInformation;
+import africa.semicolon.data.models.*;
 import africa.semicolon.dtos.*;
 
 import java.time.LocalDateTime;
@@ -66,12 +63,26 @@ public static SellerContactInformation mapSellerInfo(RegisterSellerRequest regis
         ViewAdResponse viewAdResponse = new ViewAdResponse();
         viewAdResponse.setProductName(ad.getProductName());
         viewAdResponse.setSellerName(ad.getSellerName());
-        viewAdResponse.setProductDescription(String.valueOf(ad.getDateCreated()));
+        viewAdResponse.setDateCreated(ad.getDateCreated());
+        viewAdResponse.setProductDescription(ad.getProductDescription());
         viewAdResponse.setNumberOfViews(ad.getNumberOfViews());
         viewAdResponse.setSellerAddress(ad.getSellerInfo().getAddress());
         viewAdResponse.setSellerPhoneNumber(ad.getSellerInfo().getPhoneNumber());
         viewAdResponse.setSellerEmailAddress(ad.getSellerInfo().getEmailAddress());
         viewAdResponse.setReviews(ad.getReviews());
     return viewAdResponse;
+    }
+    public static Review mapReviewAdRequest(ReviewAdRequest reviewAdRequest){
+        Review review = new Review();
+        review.setContent(reviewAdRequest.getReviewBody());
+        review.setReviewerName(reviewAdRequest.getBuyerUsername());
+        return review;
+    }
+    public static ReviewAdResponse mapReviewAdRequest(Review review){
+        ReviewAdResponse reviewAdResponse = new ReviewAdResponse();
+        reviewAdResponse.setReviewerName(review.getReviewerName());
+        reviewAdResponse.setContent(review.getContent());
+        reviewAdResponse.setDateCreated(review.getDateCreated());
+        return reviewAdResponse;
     }
 }

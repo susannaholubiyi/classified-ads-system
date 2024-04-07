@@ -1,11 +1,10 @@
 package africa.semicolon.services;
 
-import africa.semicolon.dtos.CreateAdRequest;
-import africa.semicolon.dtos.CreateAdResponse;
-import africa.semicolon.dtos.RegisterSellerRequest;
-import africa.semicolon.dtos.RegisterSellerResponse;
+import africa.semicolon.data.models.Seller;
+import africa.semicolon.dtos.*;
 
 public interface SellerServices {
     RegisterSellerResponse register(RegisterSellerRequest registerSellerRequest);
     CreateAdResponse createAd(CreateAdRequest createAdRequest);
+    Seller findUserBy(String username);
 }

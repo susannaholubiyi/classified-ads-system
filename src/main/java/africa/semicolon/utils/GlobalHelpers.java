@@ -1,9 +1,12 @@
 package africa.semicolon.utils;
 
+import africa.semicolon.data.models.Seller;
 import africa.semicolon.exceptions.IllegalArgumentException;
 import africa.semicolon.exceptions.IncorrectPhoneNumberLength;
 import africa.semicolon.exceptions.InvalidInputException;
+import africa.semicolon.exceptions.SellerDoesNotExistException;
 
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 public class GlobalHelpers {
@@ -28,6 +31,7 @@ public class GlobalHelpers {
         }
         else throw new InvalidInputException("phone number should be digits");
     }
+
 
     private static void validateLengthOf(String phoneNumber) {
         if (phoneNumber.length() != 11){
