@@ -107,7 +107,7 @@
       <recent name="africa.semicolon.data.reposiories" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SellerServicesImplTest.notRegisteredBuyerCannotViewOneParticularAdTest">
+  <component name="RunManager" selected="JUnit.SellerServicesImplTest">
     <configuration name="BuyerServiceImplTest.buyerCanOnlyRegisterWithUniqueUsernameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="classifiedAdsSystem" />
       <extension name="coverage">
@@ -140,6 +140,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SellerServicesImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="classifiedAdsSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="africa.semicolon.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.SellerServicesImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SellerServicesImplTest.notRegisteredBuyerCannotViewOneParticularAdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="classifiedAdsSystem" />
       <extension name="coverage">
@@ -151,22 +166,6 @@
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
       <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.SellerServicesImplTest" />
       <option name="METHOD_NAME" value="notRegisteredBuyerCannotViewOneParticularAdTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SellerServicesImplTest.registeredBuyerCanViewOneParticularAdsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="classifiedAdsSystem" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="africa.semicolon.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.SellerServicesImplTest" />
-      <option name="METHOD_NAME" value="registeredBuyerCanViewOneParticularAdsTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -187,11 +186,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SellerServicesImplTest" />
         <item itemvalue="JUnit.SellerServicesImplTest.notRegisteredBuyerCannotViewOneParticularAdTest" />
         <item itemvalue="Spring Boot.Main" />
         <item itemvalue="JUnit.BuyerServiceImplTest.buyerCanOnlyRegisterWithUniqueUsernameTest" />
         <item itemvalue="JUnit.BuyerServiceImplTest.buyerCanRegisterTest" />
-        <item itemvalue="JUnit.SellerServicesImplTest.registeredBuyerCanViewOneParticularAdsTest" />
       </list>
     </recent_temporary>
   </component>
