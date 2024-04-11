@@ -11,11 +11,11 @@ import java.util.regex.Pattern;
 
 public class GlobalHelpers {
     public static void validateIfEmpty(String request) {
-        if (request.isEmpty()) throw new IllegalArgumentException("Empty request");
+        if (request.isEmpty()) throw new IllegalArgumentException(String.format("%s is empty", request));
     }
 
     public static void validateIfNull(String request) {
-        if (request == null) throw new NullPointerException("Not a legal argument");
+        if (request == null) throw new NullPointerException(String.format("%s is not a valid argument", request));
     }
     public static boolean isNumeric(String productPrice) {
         String regex = "\\d+";

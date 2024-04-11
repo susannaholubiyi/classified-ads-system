@@ -5,16 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7255add-a107-43fc-842e-1b22cc1944d4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/EditAdRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/EditAdResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/models/Address.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/CreateSellerContactInfoRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/CreateSellerContactInfoResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/exceptions/ContactInfoNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/SellerContactInfoServices.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/SellerContactInfoServicesImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/controllers/AdSystemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/controllers/AdSystemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/models/Ad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/models/Ad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/models/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/models/Seller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/models/SellerContactInformation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/repositories/SellerContactInfoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/repositories/SellerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/repositories/SellerRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/CreateAdRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/CreateAdRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/RegisterSellerRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/RegisterSellerRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/ViewAdResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/ViewAdResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/AdServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/AdServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/AdServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/AdServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/BuyerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/BuyerServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/SellerServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/SellerServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/SellerServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/SellerServicesImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/utils/GlobalHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/utils/GlobalHelpers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/utils/Mappers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/utils/Mappers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/africa/semicolon/controllers/AdSystemControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/controllers/AdSystemControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/SellerServicesImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/SellerServicesImplTest.java" afterDir="false" />
@@ -47,7 +62,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2eZ6clvcgyjj8v64sYfUp7P45Ds" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -65,6 +82,7 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/user/Desktop/classifiedAdsSystem/src/test&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -77,6 +95,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
@@ -86,23 +107,8 @@
       <recent name="africa.semicolon.data.reposiories" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SellerServicesImplTest">
-    <configuration name="AdSystemControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="classifiedAdsSystem" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="africa.semicolon.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.controllers" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.controllers.AdSystemControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SellerServicesImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.SellerServicesImplTest.notRegisteredBuyerCannotViewOneParticularAdTest">
+    <configuration name="BuyerServiceImplTest.buyerCanOnlyRegisterWithUniqueUsernameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="classifiedAdsSystem" />
       <extension name="coverage">
         <pattern>
@@ -111,29 +117,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.SellerServicesImplTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SellerServicesImplTest.registerSellerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="classifiedAdsSystem" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="africa.semicolon.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.SellerServicesImplTest" />
-      <option name="METHOD_NAME" value="registerSellerTest" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.BuyerServiceImplTest" />
+      <option name="METHOD_NAME" value="buyerCanOnlyRegisterWithUniqueUsernameTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SellerServicesImplTest.registeredSeller_editAdWithEmptyProductPrice_sellerDoesNotExistExceptionIsThrownTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BuyerServiceImplTest.buyerCanRegisterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="classifiedAdsSystem" />
       <extension name="coverage">
         <pattern>
@@ -142,14 +133,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.SellerServicesImplTest" />
-      <option name="METHOD_NAME" value="registeredSeller_editAdWithEmptyProductPrice_sellerDoesNotExistExceptionIsThrownTest" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.BuyerServiceImplTest" />
+      <option name="METHOD_NAME" value="buyerCanRegisterTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SellerServicesImplTest.registeredSeller_editAdWithInvalidProductPrice_sellerDoesNotExistExceptionIsThrownTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SellerServicesImplTest.notRegisteredBuyerCannotViewOneParticularAdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="classifiedAdsSystem" />
       <extension name="coverage">
         <pattern>
@@ -159,19 +150,48 @@
       </extension>
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
       <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.SellerServicesImplTest" />
-      <option name="METHOD_NAME" value="registeredSeller_editAdWithInvalidProductPrice_sellerDoesNotExistExceptionIsThrownTest" />
+      <option name="METHOD_NAME" value="notRegisteredBuyerCannotViewOneParticularAdTest" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SellerServicesImplTest.registeredBuyerCanViewOneParticularAdsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="classifiedAdsSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="africa.semicolon.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.SellerServicesImplTest" />
+      <option name="METHOD_NAME" value="registeredBuyerCanViewOneParticularAdsTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="classifiedAdsSystem" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="africa.semicolon.Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="africa.semicolon.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SellerServicesImplTest" />
-        <item itemvalue="JUnit.SellerServicesImplTest.registerSellerTest" />
-        <item itemvalue="JUnit.AdSystemControllerTest" />
-        <item itemvalue="JUnit.SellerServicesImplTest.registeredSeller_editAdWithInvalidProductPrice_sellerDoesNotExistExceptionIsThrownTest" />
-        <item itemvalue="JUnit.SellerServicesImplTest.registeredSeller_editAdWithEmptyProductPrice_sellerDoesNotExistExceptionIsThrownTest" />
+        <item itemvalue="JUnit.SellerServicesImplTest.notRegisteredBuyerCannotViewOneParticularAdTest" />
+        <item itemvalue="Spring Boot.Main" />
+        <item itemvalue="JUnit.BuyerServiceImplTest.buyerCanOnlyRegisterWithUniqueUsernameTest" />
+        <item itemvalue="JUnit.BuyerServiceImplTest.buyerCanRegisterTest" />
+        <item itemvalue="JUnit.SellerServicesImplTest.registeredBuyerCanViewOneParticularAdsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -195,7 +215,15 @@
       <workItem from="1712401062284" duration="13409000" />
       <workItem from="1712470439463" duration="5570000" />
       <workItem from="1712485919937" duration="23462000" />
-      <workItem from="1712526519906" duration="574000" />
+      <workItem from="1712526519906" duration="882000" />
+      <workItem from="1712533530541" duration="781000" />
+      <workItem from="1712556257184" duration="905000" />
+      <workItem from="1712559477620" duration="4389000" />
+      <workItem from="1712590275573" duration="1817000" />
+      <workItem from="1712665770308" duration="8779000" />
+      <workItem from="1712755527464" duration="18627000" />
+      <workItem from="1712783719969" duration="12729000" />
+      <workItem from="1712837895036" duration="11626000" />
     </task>
     <servers />
   </component>

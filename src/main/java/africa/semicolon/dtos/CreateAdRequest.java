@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class CreateAdRequest {
-    private String sellerName;
+    private String sellerUsername;
     private String productName;
     private String productDescription;
     private String productPrice;

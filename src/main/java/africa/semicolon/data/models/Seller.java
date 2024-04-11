@@ -12,9 +12,9 @@ import java.util.List;
 public class Seller {
     private String id;
     private String username;
-    private String password;
     @DBRef
-    private SellerContactInformation sellerContactInfo = new SellerContactInformation();
+    private SellerContactInformation contactInformation;
+    private String password;
     @DBRef
     private List<Ad> ads = new ArrayList<>();
     @DBRef

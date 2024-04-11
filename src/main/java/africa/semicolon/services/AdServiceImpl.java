@@ -6,10 +6,7 @@ import africa.semicolon.data.models.Seller;
 import africa.semicolon.data.repositories.AdRepository;
 import africa.semicolon.data.repositories.BuyerRepository;
 import africa.semicolon.data.repositories.SellerRepository;
-import africa.semicolon.dtos.CreateAdRequest;
-import africa.semicolon.dtos.EditAdRequest;
-import africa.semicolon.dtos.ViewAdRequest;
-import africa.semicolon.dtos.ViewAdResponse;
+import africa.semicolon.dtos.*;
 import africa.semicolon.exceptions.AdNotFoundException;
 import africa.semicolon.exceptions.InvalidInputException;
 import africa.semicolon.exceptions.SellerDoesNotExistException;
@@ -32,13 +29,14 @@ public class AdServiceImpl implements AdServices {
     SellerRepository sellerRepository;
     @Autowired
     BuyerRepository buyerRepository;
+
     @Override
     public Ad createAd(CreateAdRequest createAdRequest) {
         validateIfEmpty(createAdRequest.getProductName());
         validateIfEmpty(createAdRequest.getProductDescription());
         validateIfNull(createAdRequest.getProductName());
         validateIfNull(createAdRequest.getProductDescription());
-        validateIfNull(createAdRequest.getSellerName());
+        validateIfNull(createAdRequest.getSellerUsername());
         if(isNumeric(createAdRequest.getProductPrice())) {
             Ad newAd = Mappers.mapCreateAd(createAdRequest);
             adRepository.save(newAd);
@@ -46,6 +44,9 @@ public class AdServiceImpl implements AdServices {
         }
         throw new InvalidInputException(String.format("%s is an invalid amount", createAdRequest.getProductPrice()));
     }
+
+
+
     @Override
     public Ad editAd(EditAdRequest editAdRequest){
         validateEditAdRequest(editAdRequest);

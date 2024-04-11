@@ -6,7 +6,6 @@ import africa.semicolon.services.BuyerService;
 import africa.semicolon.services.SellerServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +22,15 @@ public class AdSystemController {
     public ResponseEntity<?> registerSeller(@RequestBody RegisterSellerRequest registerSellerRequest){
         try {
            var response =  sellerServices.register(registerSellerRequest);
+            return new ResponseEntity<>(new ApiResponse(true,response), HttpStatus.CREATED);
+        }catch (Exception e){
+            return new ResponseEntity<>(new ApiResponse(false, e.getMessage()), HttpStatus.BAD_REQUEST);
+        }
+    }
+    @PostMapping("/fill-contact-info")
+    public ResponseEntity<?> fillInContactInformation(@RequestBody CreateSellerContactInfoRequest contactInfoRequest){
+        try {
+            var response =  sellerServices.createContactInfo(contactInfoRequest);
             return new ResponseEntity<>(new ApiResponse(true,response), HttpStatus.CREATED);
         }catch (Exception e){
             return new ResponseEntity<>(new ApiResponse(false, e.getMessage()), HttpStatus.BAD_REQUEST);
@@ -63,7 +71,7 @@ public class AdSystemController {
             return new ResponseEntity<>(new ApiResponse(false, e.getMessage()), HttpStatus.BAD_REQUEST);
         }
     }
-    @PostMapping("/view-an-Ad")
+    @GetMapping("/view-an-Ad")
     public ResponseEntity<?> viewAnAd(@RequestBody ViewAdRequest viewAdRequest){
         try {
             var response =  buyerService.viewOneParticularAdWith(viewAdRequest);
@@ -72,7 +80,7 @@ public class AdSystemController {
             return new ResponseEntity<>(new ApiResponse(false, e.getMessage()), HttpStatus.BAD_REQUEST);
         }
     }
-    @PostMapping("/view-all-Ads")
+    @GetMapping("/view-all-Ads")
     public ResponseEntity<?> viewAllAds(){
         try {
             var response =  buyerService.viewAllAds();

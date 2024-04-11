@@ -15,7 +15,6 @@ public class Ad {
     private String sellerName;
     private String productName;
     private String productDescription;
-    private SellerContactInformation sellerInfo = new SellerContactInformation();
     private String productPrice;
     private int numberOfViews;
     @DBRef

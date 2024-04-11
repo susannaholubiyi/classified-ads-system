@@ -6,24 +6,40 @@ import africa.semicolon.dtos.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static africa.semicolon.utils.GlobalHelpers.validatePhoneNumber;
-
 
 public class Mappers {
     public static Seller mapRegisterSeller(RegisterSellerRequest registerSellerRequest){
         Seller seller = new Seller();
         seller.setUsername(registerSellerRequest.getUsername().toLowerCase().strip());
-        seller.setPassword(registerSellerRequest.getPassword().toLowerCase().strip());
+        seller.setPassword(registerSellerRequest.getPassword());
+
         return seller;
     }
-public static SellerContactInformation mapSellerInfo(RegisterSellerRequest registerSellerRequest) {
-        SellerContactInformation contactInformation = new SellerContactInformation();
-        validatePhoneNumber(registerSellerRequest.getPhoneNumber().strip());
-        contactInformation.setPhoneNumber(registerSellerRequest.getPhoneNumber().strip());
-        contactInformation.setEmailAddress(registerSellerRequest.getEmailAddress().toLowerCase().strip());
-        contactInformation.setAddress(registerSellerRequest.getAddress().toLowerCase().strip());
-
+public static SellerContactInformation mapSellerInfo(CreateSellerContactInfoRequest createSellerContactInfoRequest, Seller seller) {
+        SellerContactInformation contactInformation = seller.getContactInformation();
+        contactInformation.setSellerUsername(createSellerContactInfoRequest.getSellerUsername());
+        contactInformation.setPhoneNumber(createSellerContactInfoRequest.getPhoneNumber());
+        contactInformation.setEmailAddress(createSellerContactInfoRequest.getEmailAddress().toLowerCase());
+        Address address = new Address();
+        address.setHouseNo(createSellerContactInfoRequest.getHouseNo().toLowerCase());
+        address.setStreet(createSellerContactInfoRequest.getStreet().toLowerCase());
+        address.setCity(createSellerContactInfoRequest.getCity().toLowerCase());
+        address.setState(createSellerContactInfoRequest.getState().toLowerCase());
+        address.setCountry(createSellerContactInfoRequest.getCountry().toLowerCase());
+        contactInformation.setAddress(address);
         return contactInformation;
+    }
+    public static CreateSellerContactInfoResponse mapSellerResponse(SellerContactInformation contactInformation){
+        CreateSellerContactInfoResponse infoResponse = new CreateSellerContactInfoResponse();
+        infoResponse.setSellerUsername(contactInformation.getSellerUsername());
+        infoResponse.setPhoneNumber(contactInformation.getPhoneNumber());
+        infoResponse.setEmailAddress(contactInformation.getEmailAddress());
+        infoResponse.setHouseNo(contactInformation.getAddress().getHouseNo());
+        infoResponse.setStreet(contactInformation.getAddress().getStreet());
+        infoResponse.setCity(contactInformation.getAddress().getCity());
+        infoResponse.setState(contactInformation.getAddress().getState());
+        infoResponse.setCountry(contactInformation.getAddress().getCountry());
+        return infoResponse;
     }
 
     public static RegisterSellerResponse mapRegisterSeller(Seller savedUser){
@@ -32,9 +48,10 @@ public static SellerContactInformation mapSellerInfo(RegisterSellerRequest regis
         registerSellerResponse.setUsername(savedUser.getUsername().toLowerCase().strip());
         return registerSellerResponse;
     }
+
     public static Ad mapCreateAd(CreateAdRequest createAdRequest){
         Ad newAd = new Ad();
-        newAd.setSellerName(createAdRequest.getSellerName().toLowerCase().strip());
+        newAd.setSellerName(createAdRequest.getSellerUsername().toLowerCase().strip());
         newAd.setProductName(createAdRequest.getProductName().strip());
         newAd.setProductDescription(createAdRequest.getProductDescription().strip());
         newAd.setProductPrice(createAdRequest.getProductPrice());
@@ -77,9 +94,8 @@ public static SellerContactInformation mapSellerInfo(RegisterSellerRequest regis
         viewAdResponse.setDateCreated(ad.getDateCreated());
         viewAdResponse.setProductDescription(ad.getProductDescription());
         viewAdResponse.setNumberOfViews(ad.getNumberOfViews());
-        viewAdResponse.setSellerAddress(ad.getSellerInfo().getAddress());
-        viewAdResponse.setSellerPhoneNumber(ad.getSellerInfo().getPhoneNumber());
-        viewAdResponse.setSellerEmailAddress(ad.getSellerInfo().getEmailAddress());
+        viewAdResponse.setProductPrice(ad.getProductPrice());
+
         viewAdResponse.setReviews(ad.getReviews());
     return viewAdResponse;
     }
