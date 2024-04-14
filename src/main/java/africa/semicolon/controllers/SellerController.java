@@ -42,7 +42,15 @@ public class SellerController {
     public ResponseEntity<?> editAd(@RequestBody EditAdRequest editAdRequest){
         try {
             var response =  sellerServices.editAd(editAdRequest);
-            return new ResponseEntity<>(new ApiResponse(true,response), HttpStatus.CREATED);
+            return new ResponseEntity<>(new ApiResponse(true,response), HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(new ApiResponse(false, e.getMessage()), HttpStatus.BAD_REQUEST);        }
+    }
+    @DeleteMapping("/delete-ad")
+    public ResponseEntity<?> deleteAd(@RequestBody DeleteAdRequest deleteAdRequest){
+        try {
+            var response =  sellerServices.deleteAd(deleteAdRequest);
+            return new ResponseEntity<>(new ApiResponse(true,response), HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(new ApiResponse(false, e.getMessage()), HttpStatus.BAD_REQUEST);        }
     }
