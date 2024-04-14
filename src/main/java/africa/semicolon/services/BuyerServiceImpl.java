@@ -90,6 +90,13 @@ public class BuyerServiceImpl implements BuyerService{
     public ViewContactInfoResponse viewSellerContactInfo(ViewContactInfoRequest viewContactInfoRequest) {
         return contactInfoServices.viewSellerContactInfo(viewContactInfoRequest);
     }
+    @Override
+    public Seller findUserBy(String username) {
+        Optional<Seller> seller =  sellerRepository.findByUsername(username.toLowerCase().strip());
+        if(seller.isEmpty()) throw new SellerDoesNotExistException(String.format("%s is not a registered seller, kindly register", username));
+        sellerRepository.save(seller.get());
+        return seller.get();
+    }
 
 
     private static void checkIfSellerExistsWith(ReviewAdRequest reviewAdRequest, Optional<Seller> sellerOptional) {
