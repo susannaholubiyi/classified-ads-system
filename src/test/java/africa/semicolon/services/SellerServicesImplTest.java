@@ -1134,6 +1134,92 @@ public class SellerServicesImplTest {
         assertNotNull(seller1.getContactInformation());
         assertEquals("08106317491",seller1.getContactInformation().getPhoneNumber());
     }
+    @Test
+    public void registerSeller_CreateTwoAds_deleteFirstAdTest() {
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        sellerServices.register(registerSellerRequest);
+        assertEquals(1, sellerRepository.count());
+        Optional<Seller> seller = sellerRepository.findByUsername("username");
+        assertFalse(seller.get().isLocked());
+
+        CreateSellerContactInfoRequest createSellerContactInfoRequest = new CreateSellerContactInfoRequest();
+        createSellerContactInfoRequest.setHouseNo("5");
+        createSellerContactInfoRequest.setStreet("allen");
+        createSellerContactInfoRequest.setCity("yaba");
+        createSellerContactInfoRequest.setState("lagos");
+        createSellerContactInfoRequest.setCountry("nigeria");
+        createSellerContactInfoRequest.setSellerUsername("username");
+        createSellerContactInfoRequest.setPhoneNumber("08106317491");
+        createSellerContactInfoRequest.setEmailAddress("email@address.com");
+        sellerServices.createContactInfo(createSellerContactInfoRequest);
+        seller = sellerRepository.findByUsername("username");
+        assertEquals("08106317491", seller.get().getContactInformation().getPhoneNumber());
+
+        CreateAdRequest createAdRequest = new CreateAdRequest();
+        createAdRequest.setProductName("product name");
+        createAdRequest.setProductDescription("product description");
+        createAdRequest.setProductPrice("1000");
+        createAdRequest.setSellerUsername("username");
+        sellerServices.createAd(createAdRequest);
+
+        CreateAdRequest createAdRequest2 = new CreateAdRequest();
+        createAdRequest2.setProductName("product name");
+        createAdRequest2.setProductDescription("product description");
+        createAdRequest2.setProductPrice("1000");
+        createAdRequest2.setSellerUsername("username");
+        sellerServices.createAd(createAdRequest2);
+        seller = sellerRepository.findByUsername("username");
+        assertTrue(seller.isPresent());
+        assertEquals(2, adRepository.count());
+
+        DeleteAdRequest deleteAdRequest = new DeleteAdRequest();
+        Ad ad = seller.get().getAds().get(0);
+        deleteAdRequest.setAdId(ad.getId());
+        deleteAdRequest.setSellerUsername("username");
+        sellerServices.deleteAd(deleteAdRequest);
+        seller = sellerRepository.findByUsername("username");
+        assertTrue(seller.isPresent());
+        assertEquals(1, adRepository.count());
+    }
+
+    @Test
+    public void registerSeller_deleteAdThatDoesNotExist_AdNotFoundExceptionIsThrownTest() {
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        sellerServices.register(registerSellerRequest);
+        assertEquals(1, sellerRepository.count());
+        Optional<Seller> seller = sellerRepository.findByUsername("username");
+        assertFalse(seller.get().isLocked());
+
+        CreateSellerContactInfoRequest createSellerContactInfoRequest = new CreateSellerContactInfoRequest();
+        createSellerContactInfoRequest.setHouseNo("5");
+        createSellerContactInfoRequest.setStreet("allen");
+        createSellerContactInfoRequest.setCity("yaba");
+        createSellerContactInfoRequest.setState("lagos");
+        createSellerContactInfoRequest.setCountry("nigeria");
+        createSellerContactInfoRequest.setSellerUsername("username");
+        createSellerContactInfoRequest.setPhoneNumber("08106317491");
+        createSellerContactInfoRequest.setEmailAddress("email@address.com");
+        sellerServices.createContactInfo(createSellerContactInfoRequest);
+        seller = sellerRepository.findByUsername("username");
+        assertEquals("08106317491", seller.get().getContactInformation().getPhoneNumber());
+
+        DeleteAdRequest deleteAdRequest = new DeleteAdRequest();
+        deleteAdRequest.setAdId("1");
+        deleteAdRequest.setSellerUsername("username");
+        assertThrows(AdNotFoundException.class,()->sellerServices.deleteAd(deleteAdRequest));
+    }
+    @Test
+    public void deleteAdWithNotRegisteredSeller_SellerDoesNotExistExceptionIsThrownTest() {
+        DeleteAdRequest deleteAdRequest = new DeleteAdRequest();
+        deleteAdRequest.setAdId("1");
+        deleteAdRequest.setSellerUsername("username");
+        assertThrows(SellerDoesNotExistException.class,()->sellerServices.deleteAd(deleteAdRequest));
+    }
+
 
 
 //    @Test

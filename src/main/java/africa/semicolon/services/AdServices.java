@@ -1,7 +1,6 @@
 package africa.semicolon.services;
 
 import africa.semicolon.data.models.Ad;
-import africa.semicolon.data.models.SellerContactInformation;
 import africa.semicolon.dtos.*;
 import org.springframework.stereotype.Service;
 
@@ -13,4 +12,6 @@ public interface AdServices {
 
     ViewAdResponse viewOneParticularAdWith(ViewAdRequest viewAdRequest);
 
+    DeleteAdResponse deleteAd(DeleteAdRequest deleteAdRequest);
 }
+

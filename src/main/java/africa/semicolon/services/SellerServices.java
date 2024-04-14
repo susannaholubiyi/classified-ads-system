@@ -12,4 +12,6 @@ public interface SellerServices {
     Seller findUserBy(String username);
 
     EditAdResponse editAd(EditAdRequest editAdRequest);
+
+    DeleteAdResponse deleteAd(DeleteAdRequest deleteAdRequest);
 }

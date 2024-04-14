@@ -91,7 +91,7 @@ public class AdServiceImpl implements AdServices {
         Optional<Seller> sellerOptional = sellerRepository.findByUsername(viewAdRequest.getSellerName().toLowerCase().strip());
         checkIfSellerExistsWith(viewAdRequest, sellerOptional);
         Optional<Ad> adOptional = getAdFrom(viewAdRequest, sellerOptional);
-        validateAd(viewAdRequest, adOptional);
+        validateAd(viewAdRequest.getAdId(), adOptional);
         Ad ad = adOptional.get();
         ad.setNumberOfViews(ad.getNumberOfViews() + 1);
         adRepository.save(ad);
@@ -99,14 +99,39 @@ public class AdServiceImpl implements AdServices {
         return mapViewAdResponse(ad);
     }
 
+    @Override
+    public DeleteAdResponse deleteAd(DeleteAdRequest deleteAdRequest) {
+        validateDeleteAdRequests(deleteAdRequest);
+        Optional<Seller> sellerOptional = sellerRepository.findByUsername(deleteAdRequest.getSellerUsername().toLowerCase().strip());
+        if (sellerOptional.isEmpty()) {
+            throw new SellerDoesNotExistException(String.format("Seller not found with username: " + deleteAdRequest.getSellerUsername()));
+        }
+        Seller seller = sellerOptional.get();
+        Optional<Ad> adOptional = getAdToBeDeletedFrom(deleteAdRequest, sellerOptional);
+        validateAd(deleteAdRequest.getAdId(), adOptional);
+        Ad ad = adOptional.get();
+        seller.getAds().remove(ad);
+        adRepository.delete(ad);
+        seller.getAds().remove(ad);
+        sellerRepository.save(seller);
+        return new DeleteAdResponse();
+    }
+
+    private static void validateDeleteAdRequests(DeleteAdRequest deleteAdRequest) {
+        validateIfEmpty(deleteAdRequest.getSellerUsername());
+        validateIfEmpty(deleteAdRequest.getAdId());
+        validateIfNull(deleteAdRequest.getSellerUsername());
+        validateIfNull(deleteAdRequest.getAdId());
+    }
+
     private void validateBuyer(String storedBuyerUsername, String provideBuyerUsername) {
         if (!storedBuyerUsername.equalsIgnoreCase(provideBuyerUsername))
             throw new NullPointerException(String.format("%s is not a registered buyer",provideBuyerUsername));
     }
 
-    private static void validateAd(ViewAdRequest viewAdRequest, Optional<Ad> adOptional) {
+    private static void validateAd(String adId, Optional<Ad> adOptional) {
         if (adOptional.isEmpty()) {
-            throw new AdNotFoundException("Ad not found with ID: " + viewAdRequest.getAdId());
+            throw new AdNotFoundException("Ad not found with ID: " + adId);
         }
     }
 
@@ -115,6 +140,14 @@ public class AdServiceImpl implements AdServices {
         Optional<Ad> adOptional;
         adOptional = seller.getAds().stream()
                 .filter(ad -> ad.getId().equals(viewAdRequest.getAdId()))
+                .findFirst();
+        return adOptional;
+    }
+    private static Optional<Ad> getAdToBeDeletedFrom(DeleteAdRequest deleteAdRequest, Optional<Seller> sellerOptional) {
+        Seller seller = sellerOptional.get();
+        Optional<Ad> adOptional;
+        adOptional = seller.getAds().stream()
+                .filter(ad -> ad.getId().equals(deleteAdRequest.getAdId()))
                 .findFirst();
         return adOptional;
     }

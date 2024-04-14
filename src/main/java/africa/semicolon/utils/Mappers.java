@@ -116,6 +116,7 @@ public static SellerContactInformation mapSellerInfo(CreateSellerContactInfoRequ
         review.setReviewerName(reviewAdRequest.getBuyerUsername());
         return review;
     }
+
     public static ReviewAdResponse mapReviewAdRequest(Review review){
         ReviewAdResponse reviewAdResponse = new ReviewAdResponse();
         reviewAdResponse.setReviewerName(review.getReviewerName());

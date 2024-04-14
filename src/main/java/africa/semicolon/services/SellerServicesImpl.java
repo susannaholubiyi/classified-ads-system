@@ -92,6 +92,12 @@ public class SellerServicesImpl implements SellerServices{
 
         return mapEditAd(ad);
     }
+
+    @Override
+    public DeleteAdResponse deleteAd(DeleteAdRequest deleteAdRequest) {
+        return adServices.deleteAd(deleteAdRequest);
+    }
+
     private void checkIfIsPresent(String request){
        if (request == null) throw new NullPointerException(String.format("%s you don't have a contact info, kindly create one", request));
     }
