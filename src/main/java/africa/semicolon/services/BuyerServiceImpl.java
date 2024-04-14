@@ -35,6 +35,8 @@ public class BuyerServiceImpl implements BuyerService{
     AdRepository adRepository;
     @Autowired
     ReviewRepository reviewRepository;
+    @Autowired
+    private SellerContactInfoServices contactInfoServices;
     @Override
     public List<Ad> viewAllAds() {
         return  adServices.viewAllAds();
@@ -43,6 +45,7 @@ public class BuyerServiceImpl implements BuyerService{
 
     @Override
     public ViewAdResponse viewOneParticularAdWith(ViewAdRequest viewAdRequest) {
+
       return adServices.viewOneParticularAdWith(viewAdRequest);
     }
 
@@ -81,6 +84,11 @@ public class BuyerServiceImpl implements BuyerService{
         adRepository.save(ad);
         reviewRepository.save(review);
         return mapReviewAdRequest(review);
+    }
+
+    @Override
+    public ViewContactInfoResponse viewSellerContactInfo(ViewContactInfoRequest viewContactInfoRequest) {
+        return contactInfoServices.viewSellerContactInfo(viewContactInfoRequest);
     }
 
 

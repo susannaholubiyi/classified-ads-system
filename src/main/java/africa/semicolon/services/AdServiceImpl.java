@@ -97,7 +97,6 @@ public class AdServiceImpl implements AdServices {
         adRepository.save(ad);
 
         return mapViewAdResponse(ad);
-
     }
 
     private void validateBuyer(String storedBuyerUsername, String provideBuyerUsername) {

@@ -99,6 +99,17 @@ public static SellerContactInformation mapSellerInfo(CreateSellerContactInfoRequ
         viewAdResponse.setReviews(ad.getReviews());
     return viewAdResponse;
     }
+    public static ViewContactInfoResponse mapViewContactInfoResponse(SellerContactInformation contactInformation){
+        ViewContactInfoResponse viewContactInfoResponse = new ViewContactInfoResponse();
+        viewContactInfoResponse.setSellerPhoneNumber(contactInformation.getPhoneNumber());
+        viewContactInfoResponse.setSellerEmailAddress(contactInformation.getEmailAddress());
+        viewContactInfoResponse.setSellerHouseNo(contactInformation.getAddress().getHouseNo());
+        viewContactInfoResponse.setSellerStreet(contactInformation.getAddress().getStreet());
+        viewContactInfoResponse.setSellerCity(contactInformation.getAddress().getCity());
+        viewContactInfoResponse.setSellerState(contactInformation.getAddress().getState());
+        viewContactInfoResponse.setSellerCountry(contactInformation.getAddress().getCountry());
+        return viewContactInfoResponse;
+    }
     public static Review mapReviewAdRequest(ReviewAdRequest reviewAdRequest){
         Review review = new Review();
         review.setContent(reviewAdRequest.getReviewBody());

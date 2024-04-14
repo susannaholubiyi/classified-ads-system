@@ -40,7 +40,7 @@ public class SellerServicesImpl implements SellerServices{
         validateIfEmpty(registerSellerRequest.getPassword());
         Seller seller = mapRegisterSeller(registerSellerRequest);
         seller.setLocked(false);
-        SellerContactInformation contactInformation = sellerContactInfoServices.createSellerInformation();
+        SellerContactInformation contactInformation = sellerContactInfoServices.createSellerInformationForm();
         seller.setContactInformation(contactInformation);
         sellerRepository.save(seller);
         return mapRegisterSeller(seller);

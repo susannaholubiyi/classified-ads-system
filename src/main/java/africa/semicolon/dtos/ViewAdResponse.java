@@ -14,8 +14,5 @@ public class ViewAdResponse {
     private int numberOfViews;
     private List<Review> reviews;
     private LocalDateTime dateCreated;
-//    private String sellerPhoneNumber;
-//    private String sellerEmailAddress;
-//    private String sellerAddress;
     private String sellerName;
 }

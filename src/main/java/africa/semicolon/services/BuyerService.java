@@ -14,5 +14,6 @@ public interface BuyerService {
 
     ReviewAdResponse review(ReviewAdRequest reviewAdRequest);
 
+    ViewContactInfoResponse viewSellerContactInfo(ViewContactInfoRequest viewContactInfoRequest);
 }
 

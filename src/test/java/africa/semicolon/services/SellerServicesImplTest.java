@@ -1065,6 +1065,77 @@ public class SellerServicesImplTest {
         viewAdRequest.setAdId(ad.getId());
         assertThrows(NullPointerException.class,()->buyerService.viewOneParticularAdWith(viewAdRequest));
     }
+    @Test
+    public void registerBuyer_ViewOneParticularAd_viewSellerInfoTest() {
+        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
+        registerSellerRequest.setUsername("username");
+        registerSellerRequest.setPassword("password");
+        sellerServices.register(registerSellerRequest);
+        assertEquals(1, sellerRepository.count());
+        Optional<Seller> seller = sellerRepository.findByUsername("username");
+        assertFalse(seller.get().isLocked());
+
+        CreateSellerContactInfoRequest createSellerContactInfoRequest = new CreateSellerContactInfoRequest();
+        createSellerContactInfoRequest.setHouseNo("5");
+        createSellerContactInfoRequest.setStreet("allen");
+        createSellerContactInfoRequest.setCity("yaba");
+        createSellerContactInfoRequest.setState("lagos");
+        createSellerContactInfoRequest.setCountry("nigeria");
+        createSellerContactInfoRequest.setSellerUsername("username");
+        createSellerContactInfoRequest.setPhoneNumber("08106317491");
+        createSellerContactInfoRequest.setEmailAddress("email@address.com");
+        sellerServices.createContactInfo(createSellerContactInfoRequest);
+        seller = sellerRepository.findByUsername("username");
+        assertEquals("08106317491",seller.get().getContactInformation().getPhoneNumber());
+
+        CreateAdRequest createAdRequest = new CreateAdRequest();
+        createAdRequest.setProductName("product name");
+        createAdRequest.setProductDescription("product description");
+        createAdRequest.setProductPrice("1000");
+        createAdRequest.setSellerUsername("username");
+        sellerServices.createAd(createAdRequest);
+
+        CreateAdRequest createAdRequest2 = new CreateAdRequest();
+        createAdRequest2.setProductName("product name");
+        createAdRequest2.setProductDescription("product description");
+        createAdRequest2.setProductPrice("1000");
+        createAdRequest2.setSellerUsername("username");
+        sellerServices.createAd(createAdRequest2);
+        seller = sellerRepository.findByUsername("username");
+        assertTrue(seller.isPresent());
+        assertEquals(2, adRepository.count());
+
+        RegisterBuyerRequest registerBuyerRequest = new RegisterBuyerRequest();
+        registerBuyerRequest.setName("buyername");
+        registerBuyerRequest.setUsername("buyerusername");
+        buyerService.register(registerBuyerRequest);
+        assertEquals(1, buyerRepository.count());
+        Optional<Buyer> buyer = buyerRepository.findByUsername("buyerusername");
+        assertFalse(buyer.get().isLocked());
+        assertEquals(1, buyerRepository.count());
+
+        ViewAdRequest viewAdRequest = new ViewAdRequest();
+        viewAdRequest.setBuyerUsername("buyerusername");
+        viewAdRequest.setSellerName("username");
+        Ad ad = seller.get().getAds().get(0);
+        viewAdRequest.setAdId(ad.getId());
+        buyerService.viewOneParticularAdWith(viewAdRequest);
+        seller = sellerRepository.findByUsername("username");
+        ad = seller.get().getAds().get(0);
+        assertEquals(1,ad.getNumberOfViews() );
+
+        ViewContactInfoRequest viewContactInfoRequest = new ViewContactInfoRequest();
+        viewContactInfoRequest.setSellerUsername("username");
+        buyerService.viewSellerContactInfo(viewContactInfoRequest);
+        String sellerName = buyer.get().getSellerName();
+        Optional<Seller> optionalSeller = sellerRepository.findByUsername("username");
+        assertTrue(optionalSeller.isPresent());
+        Seller seller1 = optionalSeller.get();
+        assertNotNull(seller1.getContactInformation());
+        assertEquals("08106317491",seller1.getContactInformation().getPhoneNumber());
+    }
+
+
 //    @Test
 //    public void registerSeller_CreateOneAd_registerBuyer_registeredBuyerCanReviewAnAdTest() {
 //        RegisterSellerRequest registerSellerRequest = new RegisterSellerRequest();
