@@ -2,6 +2,7 @@ package africa.semicolon.services;
 
 import africa.semicolon.data.models.Ad;
 import africa.semicolon.data.models.Buyer;
+import africa.semicolon.data.models.Review;
 import africa.semicolon.data.models.Seller;
 import africa.semicolon.data.repositories.AdRepository;
 import africa.semicolon.data.repositories.BuyerRepository;
@@ -29,6 +30,7 @@ public class AdServiceImpl implements AdServices {
     SellerRepository sellerRepository;
     @Autowired
     BuyerRepository buyerRepository;
+
 
     @Override
     public Ad createAd(CreateAdRequest createAdRequest) {

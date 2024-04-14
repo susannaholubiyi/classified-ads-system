@@ -1,6 +1,7 @@
 package africa.semicolon.services;
 
 import africa.semicolon.data.models.Ad;
+import africa.semicolon.data.models.Review;
 import africa.semicolon.data.models.Seller;
 import africa.semicolon.data.models.SellerContactInformation;
 import africa.semicolon.data.repositories.SellerContactInfoRepository;
@@ -28,6 +29,7 @@ public class SellerServicesImpl implements SellerServices{
     private AdServices adServices;
     @Autowired
     private SellerContactInfoServices sellerContactInfoServices;
+
 
 
     @Override
