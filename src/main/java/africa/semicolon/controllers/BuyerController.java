@@ -24,16 +24,7 @@ public class BuyerController {
             return new ResponseEntity<>(new ApiResponse(false, e.getMessage()), HttpStatus.BAD_REQUEST);
         }
     }
-//    @GetMapping("/find-seller")
-//    public ResponseEntity<?> findSeller(String username){
-//        try {
-//            var response =  buyerService.findUserBy(username);
-//            return new ResponseEntity<>(new ApiResponse(true,response), HttpStatus.FOUND);
-//        }catch (Exception e){
-//            return new ResponseEntity<>(new ApiResponse(false, e.getMessage()), HttpStatus.NOT_FOUND);
-//        }
-//
-//    }
+
     @GetMapping("/view-an-Ad")
     public ResponseEntity<?> viewAnAd(@RequestBody ViewAdRequest viewAdRequest){
         try {
