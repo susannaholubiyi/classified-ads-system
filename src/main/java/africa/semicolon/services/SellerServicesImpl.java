@@ -1,7 +1,6 @@
 package africa.semicolon.services;
 
 import africa.semicolon.data.models.Ad;
-import africa.semicolon.data.models.Review;
 import africa.semicolon.data.models.Seller;
 import africa.semicolon.data.models.SellerContactInformation;
 import africa.semicolon.data.repositories.SellerContactInfoRepository;
@@ -13,6 +12,7 @@ import africa.semicolon.exceptions.UsernameAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import static africa.semicolon.utils.GlobalHelpers.validateIfEmpty;
@@ -30,6 +30,11 @@ public class SellerServicesImpl implements SellerServices{
     @Autowired
     private SellerContactInfoServices sellerContactInfoServices;
 
+    @Override
+    public List<Ad> viewAllAds() {
+        return  adServices.viewAllAds();
+
+    }
 
 
     @Override

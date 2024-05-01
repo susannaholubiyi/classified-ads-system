@@ -12,6 +12,16 @@ import org.springframework.web.bind.annotation.*;
 public class SellerController {
     @Autowired
     private SellerServices sellerServices;
+
+    @GetMapping("/view-all-Ads")
+    public ResponseEntity<?> viewAllAds(){
+        try {
+            var response =  sellerServices.viewAllAds();
+            return new ResponseEntity<>(new ApiResponse(true,response), HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(new ApiResponse(false, e.getMessage()), HttpStatus.BAD_REQUEST);
+        }
+    }
     @PostMapping("/register-seller")
     public ResponseEntity<?> registerSeller(@RequestBody RegisterSellerRequest registerSellerRequest){
         try {
@@ -38,7 +48,7 @@ public class SellerController {
         }catch (Exception e){
             return new ResponseEntity<>(new ApiResponse(false, e.getMessage()), HttpStatus.BAD_REQUEST);        }
     }
-    @PostMapping("/edit-ad")
+    @PatchMapping("/edit-ad")
     public ResponseEntity<?> editAd(@RequestBody EditAdRequest editAdRequest){
         try {
             var response =  sellerServices.editAd(editAdRequest);

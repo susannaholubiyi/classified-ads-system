@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b7255add-a107-43fc-842e-1b22cc1944d4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/controllers/SellerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/controllers/SellerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/AdServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/AdServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/AdServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/AdServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/SellerServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/SellerServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/SellerServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/SellerServicesImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +85,7 @@
       <recent name="africa.semicolon.data.reposiories" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.Main">
+  <component name="RunManager" selected="JUnit.SellerServicesImplTest">
     <configuration name="SellerServicesImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="classifiedAdsSystem" />
       <extension name="coverage">
@@ -159,11 +164,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SellerServicesImplTest" />
         <item itemvalue="Spring Boot.Main" />
         <item itemvalue="JUnit.SellerServicesImplTest.deleteAdWithNotRegisteredSeller_SellerDoesNotExistExceptionIsThrownTest" />
         <item itemvalue="JUnit.SellerServicesImplTest.registerBuyer_deleteAdThatDoesNotExist_AdNotFoundExceptionIsThrownTest" />
         <item itemvalue="JUnit.SellerServicesImplTest.registerBuyer_CreateTwoAds_deleteFirstAdTest" />
-        <item itemvalue="JUnit.SellerServicesImplTest" />
       </list>
     </recent_temporary>
   </component>
@@ -203,7 +208,13 @@
       <workItem from="1712950765612" duration="2481000" />
       <workItem from="1712967972970" duration="23316000" />
       <workItem from="1713083350109" duration="28910000" />
-      <workItem from="1713134941716" duration="2738000" />
+      <workItem from="1713134941716" duration="7780000" />
+      <workItem from="1713194525180" duration="2485000" />
+      <workItem from="1713514215265" duration="170000" />
+      <workItem from="1714048361020" duration="2071000" />
+      <workItem from="1714114401757" duration="3253000" />
+      <workItem from="1714429740507" duration="263000" />
+      <workItem from="1714574997302" duration="247000" />
     </task>
     <servers />
   </component>
