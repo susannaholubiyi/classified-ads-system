@@ -5,12 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7255add-a107-43fc-842e-1b22cc1944d4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/AdsImages/fendiBag.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/AdsImages/heels.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/AdsImages/jeanTrousers.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/AdsImages/sneakers.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/config/AppConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/exceptions/MediaNotUploadedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/cloud/CloudServices.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/cloud/CloudinaryServices.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/template/Application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/template/secret.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/service/cloud/CloudServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-client.cookies" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-client.cookies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/controllers/BuyerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/controllers/BuyerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/controllers/SellerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/controllers/SellerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/AdServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/AdServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/AdServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/AdServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/SellerServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/SellerServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/SellerServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/SellerServicesImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/models/Ad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/models/Ad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/utils/GlobalHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/utils/GlobalHelpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/BuyerServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/BuyerServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,20 +75,29 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/user/Desktop/classifiedAdsSystem/src/test&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/user/Desktop/classifiedAdsSystem/src/main/java/africa/semicolon/AdsImages&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;/home/user/Desktop/classifiedAdsSystem/src/main/java/africa/semicolon/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;c27b5ae319c2adc4f82aec7a5a79b453&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mongo&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/africa/semicolon/AdsImages" />
       <recent name="$PROJECT_DIR$/src/test" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -85,7 +109,29 @@
       <recent name="africa.semicolon.data.reposiories" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SellerServicesImplTest">
+  <component name="RunManager" selected="JUnit.CloudServiceTest.testUploadImage">
+    <configuration name="generated-requests | #25" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="25" requestIdentifier="#25" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #29" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="29" requestIdentifier="#29" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="CloudServiceTest.testUploadImage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="classifiedAdsSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="africa.semicolon.service.cloud.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="africa.semicolon.service.cloud" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.service.cloud.CloudServiceTest" />
+      <option name="METHOD_NAME" value="testUploadImage" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SellerServicesImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="classifiedAdsSystem" />
       <extension name="coverage">
@@ -97,54 +143,6 @@
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
       <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.SellerServicesImplTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SellerServicesImplTest.deleteAdWithNotRegisteredSeller_SellerDoesNotExistExceptionIsThrownTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="classifiedAdsSystem" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="africa.semicolon.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.SellerServicesImplTest" />
-      <option name="METHOD_NAME" value="deleteAdWithNotRegisteredSeller_SellerDoesNotExistExceptionIsThrownTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SellerServicesImplTest.registerBuyer_CreateTwoAds_deleteFirstAdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="classifiedAdsSystem" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="africa.semicolon.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.SellerServicesImplTest" />
-      <option name="METHOD_NAME" value="registerBuyer_CreateTwoAds_deleteFirstAdTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SellerServicesImplTest.registerBuyer_deleteAdThatDoesNotExist_AdNotFoundExceptionIsThrownTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="classifiedAdsSystem" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="africa.semicolon.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.SellerServicesImplTest" />
-      <option name="METHOD_NAME" value="registerBuyer_deleteAdThatDoesNotExist_AdNotFoundExceptionIsThrownTest" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -164,11 +162,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SellerServicesImplTest" />
+        <item itemvalue="JUnit.CloudServiceTest.testUploadImage" />
         <item itemvalue="Spring Boot.Main" />
-        <item itemvalue="JUnit.SellerServicesImplTest.deleteAdWithNotRegisteredSeller_SellerDoesNotExistExceptionIsThrownTest" />
-        <item itemvalue="JUnit.SellerServicesImplTest.registerBuyer_deleteAdThatDoesNotExist_AdNotFoundExceptionIsThrownTest" />
-        <item itemvalue="JUnit.SellerServicesImplTest.registerBuyer_CreateTwoAds_deleteFirstAdTest" />
+        <item itemvalue="HTTP Request.generated-requests | #25" />
+        <item itemvalue="HTTP Request.generated-requests | #29" />
+        <item itemvalue="JUnit.SellerServicesImplTest" />
       </list>
     </recent_temporary>
   </component>
@@ -214,7 +212,24 @@
       <workItem from="1714048361020" duration="2071000" />
       <workItem from="1714114401757" duration="3253000" />
       <workItem from="1714429740507" duration="263000" />
-      <workItem from="1714574997302" duration="247000" />
+      <workItem from="1714574997302" duration="991000" />
+      <workItem from="1714584720238" duration="480000" />
+      <workItem from="1714653806289" duration="4000" />
+      <workItem from="1714983717648" duration="1444000" />
+      <workItem from="1715259714350" duration="1871000" />
+      <workItem from="1715268597548" duration="351000" />
+      <workItem from="1715273002754" duration="930000" />
+      <workItem from="1715330996705" duration="131000" />
+      <workItem from="1715791460354" duration="5899000" />
+      <workItem from="1715935804931" duration="599000" />
+      <workItem from="1716228010295" duration="1100000" />
+      <workItem from="1716283037274" duration="103000" />
+      <workItem from="1716563047264" duration="95000" />
+      <workItem from="1716829180214" duration="9020000" />
+      <workItem from="1716884494841" duration="131000" />
+      <workItem from="1717997797696" duration="193000" />
+      <workItem from="1718003641394" duration="3725000" />
+      <workItem from="1718020540403" duration="583000" />
     </task>
     <servers />
   </component>

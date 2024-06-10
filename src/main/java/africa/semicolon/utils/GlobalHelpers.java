@@ -38,4 +38,5 @@ public class GlobalHelpers {
             throw new IncorrectPhoneNumberLength("Phone number should be 11 digits");
         }
     }
+    public static String filePath = "/home/user/Desktop/classifiedAdsSystem/src/main/java/africa/semicolon/AdsImages/fendiBag.jpg";
 }

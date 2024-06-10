@@ -1,0 +1,6 @@
+{
+  "timestamp": "2024-05-09T15:03:06.718+00:00",
+  "status": 400,
+  "error": "Bad Request",
+  "path": "/api/v1/seller/register-seller"
+}

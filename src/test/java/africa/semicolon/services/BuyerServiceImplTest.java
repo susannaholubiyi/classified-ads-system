@@ -1,7 +1,6 @@
 package africa.semicolon.services;
 
 import africa.semicolon.data.models.Buyer;
-import africa.semicolon.data.models.Seller;
 import africa.semicolon.data.repositories.BuyerRepository;
 import africa.semicolon.dtos.RegisterBuyerRequest;
 import africa.semicolon.exceptions.UsernameAlreadyExistsException;
