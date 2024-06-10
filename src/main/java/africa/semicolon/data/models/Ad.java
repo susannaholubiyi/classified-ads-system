@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@Document
+@Document(collection = "classified_ads")
 public class Ad {
     private String sellerName;
     private String productName;
