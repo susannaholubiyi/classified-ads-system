@@ -9,23 +9,23 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
-@Getter
+//@Getter
 @Configuration
-public class AppConfig {
-    @Value("${cloudinary.api.name}")
-    private String cloudApiName;
-    @Value("${cloudinary.api.key}")
-    private String cloudApiKey;
-    @Value("${cloudinary.api.secret}")
-    private String cloudApiSecret;
+public class CloudinaryConfig {
+//    @Value("${cloudinary.api.name}")
+    private String cloudApiName = "dbd4aummb";
+//    @Value("${cloudinary.api.key}")
+    private String cloudApiKey = "762645381836436";
+//    @Value("${cloudinary.api.secret}")
+    private String cloudApiSecret = "yL60VQ5aN6UmWHaBJ4y0DaJyv_4";
 
     @Bean
     public Cloudinary cloudinary(){
-        Map<?, ?> map = ObjectUtils.asMap(
+        Map<?, ?> config = ObjectUtils.asMap(
                 "cloud_name", cloudApiName,
                 "api_key", cloudApiKey,
                 "api_secret", cloudApiSecret
         );
-        return new Cloudinary(map);
+        return new Cloudinary(config);
     }
 }
