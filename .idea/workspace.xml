@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b7255add-a107-43fc-842e-1b22cc1944d4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/config/CloudinaryConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/cloud/CloudinaryServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/cloud/CloudinaryServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/template/Application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/template/secret.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +26,19 @@
     <option name="NEW_BASE" value="main" />
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/main" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -228,6 +235,9 @@
       <workItem from="1718204618254" duration="8422000" />
       <workItem from="1718284550945" duration="1212000" />
       <workItem from="1718298503780" duration="2209000" />
+      <workItem from="1718303551325" duration="619000" />
+      <workItem from="1718351205330" duration="2639000" />
+      <workItem from="1718722225588" duration="1156000" />
     </task>
     <servers />
   </component>

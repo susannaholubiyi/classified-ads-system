@@ -29,6 +29,7 @@ public class GlobalHelpers {
         if (condition) {
             validateLengthOf(phoneNumber);
         }
+
         else throw new InvalidInputException("phone number should be digits");
     }
 
